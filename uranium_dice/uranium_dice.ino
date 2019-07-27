@@ -2,91 +2,49 @@
 
 #include <SPI.h>
 
+volatile uint8_t didTrigger;
 volatile unsigned long prevTrigTime;
 volatile unsigned long trigCount;
 
-volatile unsigned long timeRingBuff[256];
-volatile uint8_t bitRingBuff[256];
+volatile unsigned long ringBuff[256];
 
-volatile uint8_t timeRingBuffWriteHead;
-volatile uint8_t bitRingBuffWriteHead;
+volatile uint8_t ringBuffWriteHead;
 
 void geigerEvent() {
   digitalWrite(UV_LED_PIN, HIGH);
-  
-  uint8_t timeIdx = timeRingBuffWriteHead;
-  uint8_t bitIdx = bitRingBuffWriteHead;
-  
-  unsigned long trigTime = micros() / 4;
-  unsigned long deltaT = trigTime - prevTrigTime;
-  
-  timeRingBuff[timeIdx] =  deltaT;
-  timeRingBuffWriteHead++;
 
-  if(timeRingBuff[timeIdx] > timeRingBuff[timeIdx-2]) {
-    bitRingBuff[bitIdx] = 1;
-    bitRingBuffWriteHead++;
-  }
-  else if(timeRingBuff[timeIdx] < timeRingBuff[timeIdx-2]) {
-    bitRingBuff[bitIdx] = 0;
-    bitRingBuffWriteHead++;
-  }
-
-  bitIdx = bitRingBuffWriteHead;
-  bitRingBuff[bitIdx] = deltaT % 2;
-  bitRingBuffWriteHead++;
-
+  didTrigger = 1;
+  prevTrigTime = millis();
   trigCount++;
-
-  prevTrigTime = trigTime;
 }
 
-// VON NEUMAN METHOD
-uint8_t getRandByte() {
-  
-  uint8_t randByte = 0;
+ISR(TIMER0_COMPA_vect) {
+  // Turn off UV LEDs if it's been more than 50 ms since last trigger
+  unsigned long now = millis();
 
-  uint8_t bitRingBuffReadHead = bitRingBuffWriteHead - 2;
-
-  uint8_t currBit = 0;
-  while(currBit < 8) {
-    
-    while(1) {
-
-      uint8_t diff = bitRingBuffWriteHead - bitRingBuffReadHead;
-      
-      if(diff >= 2) {
-        // Generate a bit
-        uint8_t idx = bitRingBuffReadHead;
-        bitRingBuffReadHead += 2;
-
-        if((bitRingBuff[idx] ^ bitRingBuff[idx+1]) == 0) {
-          // 11 or 00
-          continue;
-        }
-        else if((bitRingBuff[idx] == 1) && (bitRingBuff[idx+1] == 0)) {
-          // 10
-          randByte += 0b00000001 << currBit;
-          currBit++;
-          break;
-        }
-        else {
-          // 01 is all that's left
-          currBit++;
-          break;
-        }
-        
-
-      }
-      
-    }
-    
+  if((now - prevTrigTime) > 50) {
+    digitalWrite(UV_LED_PIN, LOW);
   }
 
-  return randByte;
+  // Ring Buffer Format
+  // Value 1-254 is the number of 1 ms windows between subsequent events
+  // A value of 0 denotes an event
+
+  // Handle this 1 ms window
+  if(didTrigger) {
+    ringBuff[ringBuffWriteHead+1] = 0;
+    ringBuff[ringBuffWriteHead+2] = 0;
+    ringBuffWriteHead += 2;
+    didTrigger = 0;
+  }
+  else {
+    uint8_t newCount = ++ringBuff[ringBuffWriteHead];
+    if(newCount == 255) {
+      ringBuff[ringBuffWriteHead] = 1;
+    }
+  }
 }
 
-/*
 // SIMPLE METHOD
 uint8_t getRandByte() {
   
@@ -103,31 +61,23 @@ uint8_t getRandByte() {
       
       if(diff >= 1) {
         // Generate a bit
-        uint8_t idx = ringBuffReadHead % 128;
+        uint8_t idx = ringBuffReadHead;
         ringBuffReadHead += 1;
 
-        uint8_t xor_bit;
-        if(ringBuff[idx] < ringBuff[idx-2]) {
-          xor_bit = 1;
-        }
-        else if(ringBuff[idx] > ringBuff[idx-2]) {
-          xor_bit = 0;
-        }
-        else {
-          continue;
-        }
+        if(ringBuff[idx] == 0) {
 
-        uint8_t bitContribution = 0b00000001 << currBit;
-        if((ringBuff[idx] % 2) == 1) {
-          randByte += bitContribution;
+          uint8_t bitContribution = 0b00000001 << currBit;
+
+          if(ringBuff[idx-1] == 0) {
+            continue;
+          }
+          if((ringBuff[idx-1] % 2) == 1) {
+            randByte += bitContribution;
+          }
+
+          currBit++;
+          break;
         }
-        
-        randByte = randByte ^ (xor_bit << currBit);
-
-        currBit++;
-        break;
-        
-
       }
       
     }
@@ -136,17 +86,16 @@ uint8_t getRandByte() {
 
   return randByte;
 }
-*/
 
 void setup() {
   Serial.begin(19200);
   
   // put your setup code here, to run once:
 
-  timeRingBuffWriteHead = 0;
-  bitRingBuffWriteHead = 0;
+  ringBuffWriteHead = 0;
   prevTrigTime = 0;
   trigCount = 0;
+  ringBuff[ringBuffWriteHead] = 0;
 
   // Settings for Timer0 interrupt
   OCR0A = 0xAF; // Count at which to insert interrupt
@@ -162,14 +111,6 @@ void setup() {
   // Wait to burn in some events
   while(trigCount < 20) {
     delay(10);
-  }
-}
-
-ISR(TIMER0_COMPA_vect) {
-  unsigned long now = micros() / 4;
-
-  if((now - prevTrigTime) > 12500) {
-    digitalWrite(UV_LED_PIN, LOW);
   }
 }
 
