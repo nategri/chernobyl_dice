@@ -26,23 +26,16 @@ ISR(TIMER0_COMPA_vect) {
     digitalWrite(UV_LED_PIN, LOW);
   }
 
-  // Ring Buffer Format
-  // Value 1-254 is the number of 1 ms windows between subsequent events
-  // A value of 0 denotes an event
-
   // Handle this 1 ms window
   if(didTrigger) {
-    ringBuff[ringBuffWriteHead+1] = 0;
-    ringBuff[ringBuffWriteHead+2] = 0;
-    ringBuffWriteHead += 2;
+    ringBuff[ringBuffWriteHead] = 1;
     didTrigger = 0;
   }
   else {
-    uint8_t newCount = ++ringBuff[ringBuffWriteHead];
-    if(newCount == 255) {
-      ringBuff[ringBuffWriteHead] = 1;
-    }
+    ringBuff[ringBuffWriteHead] = 0;
   }
+
+  ringBuffWriteHead++;
 }
 
 // SIMPLE METHOD
@@ -50,37 +43,43 @@ uint8_t getRandByte() {
   
   uint8_t randByte = 0;
 
-  uint8_t ringBuffReadHead = ringBuffWriteHead - 1;
+  uint8_t ringBuffReadHead = ringBuffWriteHead - 2;
 
   uint8_t currBit = 0;
   while(currBit < 8) {
+
+
+
+    uint8_t bitContribution = 0b00000001 << currBit;
     
     while(1) {
 
+
       uint8_t diff = ringBuffWriteHead - ringBuffReadHead;
       
-      if(diff >= 1) {
+      if(diff >= 2) {
         // Generate a bit
         uint8_t idx = ringBuffReadHead;
-        ringBuffReadHead += 1;
+        ringBuffReadHead += 2;
 
-        if(ringBuff[idx] == 0) {
-
-          uint8_t bitContribution = 0b00000001 << currBit;
-
-          if(ringBuff[idx-1] == 0) {
-            continue;
-          }
-          if((ringBuff[idx-1] % 2) == 1) {
-            randByte += bitContribution;
-          }
-
+        if(ringBuff[idx] == ringBuff[idx+1]) {
+          continue;
+        }
+        else if((ringBuff[idx] == 1) && (ringBuff[idx+1] == 0)) {
+          randByte += bitContribution;
+          currBit++;
+          break;
+        }
+        else if((ringBuff[idx] == 0) && (ringBuff[idx+1] == 1)) {
           currBit++;
           break;
         }
       }
+
       
     }
+
+
     
   }
 
