@@ -118,4 +118,5 @@ void loop() {
 
   uint8_t randByte = getRandByte();
   Serial.write(randByte);
+  delay(10);
 }
