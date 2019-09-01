@@ -310,9 +310,17 @@ void loop() {
     }
 
     if(digitalRead(PUSHBUTTON) == LOW) {
-      uint8_t randByte = getRandByte(ROT3);
+
+      uint8_t randByte;
+      while(1) {
+        randByte = getRandByte(ROT3);
+        if(randByte < (256 - (256 % toggleNum))) {
+          break;
+        }
+      }
       delay(500);
-      char* displayDigits = Nixies::number_to_digits(randByte % toggleNum, NO_ZERO_PAD);
+      
+      char* displayDigits = Nixies::number_to_digits((randByte % toggleNum) + 1, NO_ZERO_PAD);
       if(digitalRead(ROT3) == LOW) {
         while(1) {
           if(digitalRead(ROT3) != LOW) {
@@ -320,10 +328,10 @@ void loop() {
           }
           nixies->display(displayDigits);
           if(digitalRead(PUSHBUTTON) == LOW) {
-            delay(200);
             break;
           }
         }
+        delay(500);
       }
     }
   }
