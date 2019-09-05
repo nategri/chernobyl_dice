@@ -93,10 +93,10 @@ void Nixies::display(char* digit) {
   for(char i=0; i<8; i++) {
     if(digit[i] < 0) {
       this->_nixie[i]->clear();
-      this->_nixie[i]->set_led(0, 0, 0);
+      //this->_nixie[i]->set_led(0, 0, 0);
     }
     else {
-      this->_nixie[i]->set_led(0, 0, 0);
+      //this->_nixie[i]->set_led(0, 0, 0);
       this->_nixie[i]->show_digit(digit[i], 127, 0);
     }
   }
@@ -264,6 +264,30 @@ void loop() {
     time_digits[5] = -1;
     nixies->display(time_digits);
     delay(10);
+
+    if(digitalRead(PUSHBUTTON) == LOW) {
+      while(true) {
+        if(digitalRead(PUSHBUTTON) == HIGH) {
+          nixies->clear();
+          break;
+        }
+      }
+      delay(200);
+      while(true) {
+        if(digitalRead(ROT1) != LOW) {
+          break;
+        }
+        if(digitalRead(PUSHBUTTON) == LOW) {
+          while(true) {
+            if(digitalRead(PUSHBUTTON) == HIGH) {
+              delay(200);
+              break;
+            }
+          }
+          break;
+        }
+      }
+    }
   }
   else if (rotPos2 == LOW) {
     // STREAMING MODE
@@ -309,7 +333,7 @@ void loop() {
       nixies->clear();
     }
 
-    if(digitalRead(PUSHBUTTON) == LOW) {
+    if((digitalRead(PUSHBUTTON) == LOW) && (toggleNum != 0)) {
 
       uint8_t randByte;
       while(1) {
