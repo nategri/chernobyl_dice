@@ -1,0 +1,422 @@
+EESchema Schematic File Version 4
+LIBS:panel_board-cache
+EELAYER 29 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L panel_board:MCP23008 U1
+U 1 1 5D6F868F
+P 6200 3750
+F 0 "U1" H 6200 4465 50  0000 C CNN
+F 1 "MCP23008" H 6200 4374 50  0000 C CNN
+F 2 "Housings_DIP:DIP-18_W7.62mm_Socket" H 6200 3750 50  0001 C CNN
+F 3 "" H 6200 3750 50  0001 C CNN
+	1    6200 3750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L panel_board:Power J5
+U 1 1 5D6FA8A7
+P 7400 4350
+F 0 "J5" V 7529 4578 50  0000 L CNN
+F 1 "Power" V 7438 4578 50  0000 L CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 7400 4350 50  0001 C CNN
+F 3 "" H 7400 4350 50  0001 C CNN
+	1    7400 4350
+	-1   0    0    -1  
+$EndComp
+$Comp
+L panel_board:I2C J3
+U 1 1 5D6FC124
+P 5850 4750
+F 0 "J3" H 5933 5115 50  0000 C CNN
+F 1 "I2C" H 5933 5024 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 5850 4750 50  0001 C CNN
+F 3 "" H 5850 4750 50  0001 C CNN
+	1    5850 4750
+	0    -1   -1   0   
+$EndComp
+$Comp
+L panel_board:Rotary J4
+U 1 1 5D6FD49E
+P 6650 2250
+F 0 "J4" H 6422 2004 50  0000 R CNN
+F 1 "Rotary" H 6422 2095 50  0000 R CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x07_Pitch2.54mm" H 6650 2250 50  0001 C CNN
+F 3 "" H 6650 2250 50  0001 C CNN
+	1    6650 2250
+	0    1    1    0   
+$EndComp
+$Comp
+L panel_board:Pushbutton J1
+U 1 1 5D6FF296
+P 5000 2250
+F 0 "J1" H 4822 2296 50  0000 R CNN
+F 1 "Pushbutton" H 4822 2205 50  0000 R CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 5000 2200 50  0001 C CNN
+F 3 "" H 5000 2200 50  0001 C CNN
+	1    5000 2250
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	6550 3250 6550 2550
+Wire Wire Line
+	6450 3250 6450 2550
+Wire Wire Line
+	6350 3250 6350 2550
+Wire Wire Line
+	5750 4450 5750 4250
+Wire Wire Line
+	5850 4450 5850 4250
+Wire Wire Line
+	7100 2550 6750 2550
+Wire Wire Line
+	6550 4250 7100 4250
+Wire Wire Line
+	7100 4250 7100 2650
+Connection ~ 7100 4250
+Wire Wire Line
+	6650 2550 6650 2600
+Wire Wire Line
+	6650 2600 7100 2600
+Connection ~ 7100 2600
+Wire Wire Line
+	7100 2600 7100 2550
+Connection ~ 7100 2650
+Wire Wire Line
+	7100 2650 7100 2600
+Wire Wire Line
+	5950 4250 5950 4450
+Wire Wire Line
+	5950 4450 6050 4450
+Wire Wire Line
+	6550 4450 6550 4250
+Connection ~ 6550 4250
+Wire Wire Line
+	7100 4350 6250 4350
+Wire Wire Line
+	5300 4350 5300 3900
+Wire Wire Line
+	5300 3250 5750 3250
+Wire Wire Line
+	6250 4250 6250 4350
+Connection ~ 6250 4350
+Wire Wire Line
+	6250 4350 5300 4350
+Wire Wire Line
+	6050 4250 6050 4450
+Connection ~ 6050 4450
+Wire Wire Line
+	6050 4450 6150 4450
+Wire Wire Line
+	6150 4250 6150 4450
+Connection ~ 6150 4450
+Wire Wire Line
+	6150 4450 6550 4450
+$Comp
+L Switch:SW_SPST SW3
+U 1 1 5D7067D1
+P 3650 3900
+F 0 "SW3" H 3650 4135 50  0000 C CNN
+F 1 "SW_SPST" H 3650 4044 50  0000 C CNN
+F 2 "panel_board:ToggleSW" H 3650 3900 50  0001 C CNN
+F 3 "~" H 3650 3900 50  0001 C CNN
+	1    3650 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_SPST SW4
+U 1 1 5D705DA8
+P 3650 4350
+F 0 "SW4" H 3650 4585 50  0000 C CNN
+F 1 "SW_SPST" H 3650 4494 50  0000 C CNN
+F 2 "panel_board:ToggleSW" H 3650 4350 50  0001 C CNN
+F 3 "~" H 3650 4350 50  0001 C CNN
+	1    3650 4350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_SPST SW2
+U 1 1 5D7072E6
+P 3650 3450
+F 0 "SW2" H 3650 3685 50  0000 C CNN
+F 1 "SW_SPST" H 3650 3594 50  0000 C CNN
+F 2 "panel_board:ToggleSW" H 3650 3450 50  0001 C CNN
+F 3 "~" H 3650 3450 50  0001 C CNN
+	1    3650 3450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_SPST SW1
+U 1 1 5D706D5E
+P 3650 3000
+F 0 "SW1" H 3650 3235 50  0000 C CNN
+F 1 "SW_SPST" H 3650 3144 50  0000 C CNN
+F 2 "panel_board:ToggleSW" H 3650 3000 50  0001 C CNN
+F 3 "~" H 3650 3000 50  0001 C CNN
+	1    3650 3000
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_Small R4
+U 1 1 5D7212DD
+P 5000 4350
+F 0 "R4" H 5059 4396 50  0000 L CNN
+F 1 "R_Small" H 5059 4305 50  0000 L CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" H 5000 4350 50  0001 C CNN
+F 3 "~" H 5000 4350 50  0001 C CNN
+	1    5000 4350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R_Small R3
+U 1 1 5D721FDB
+P 5000 3900
+F 0 "R3" H 5059 3946 50  0000 L CNN
+F 1 "R_Small" H 5059 3855 50  0000 L CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" H 5000 3900 50  0001 C CNN
+F 3 "~" H 5000 3900 50  0001 C CNN
+	1    5000 3900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R_Small R2
+U 1 1 5D722A34
+P 5000 3450
+F 0 "R2" H 5059 3496 50  0000 L CNN
+F 1 "R_Small" H 5059 3405 50  0000 L CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" H 5000 3450 50  0001 C CNN
+F 3 "~" H 5000 3450 50  0001 C CNN
+	1    5000 3450
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R_Small R1
+U 1 1 5D7231BE
+P 5000 3000
+F 0 "R1" H 5059 3046 50  0000 L CNN
+F 1 "R_Small" H 5059 2955 50  0000 L CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" H 5000 3000 50  0001 C CNN
+F 3 "~" H 5000 3000 50  0001 C CNN
+	1    5000 3000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED D4
+U 1 1 5D7242AF
+P 4600 4350
+F 0 "D4" V 4547 4428 50  0000 L CNN
+F 1 "LED" V 4638 4428 50  0000 L CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 4600 4350 50  0001 C CNN
+F 3 "~" H 4600 4350 50  0001 C CNN
+	1    4600 4350
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D3
+U 1 1 5D7255A6
+P 4600 3900
+F 0 "D3" V 4547 3978 50  0000 L CNN
+F 1 "LED" V 4638 3978 50  0000 L CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 4600 3900 50  0001 C CNN
+F 3 "~" H 4600 3900 50  0001 C CNN
+	1    4600 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D2
+U 1 1 5D7260E4
+P 4600 3450
+F 0 "D2" V 4547 3528 50  0000 L CNN
+F 1 "LED" V 4638 3528 50  0000 L CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 4600 3450 50  0001 C CNN
+F 3 "~" H 4600 3450 50  0001 C CNN
+	1    4600 3450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:LED D1
+U 1 1 5D726AC1
+P 4600 3000
+F 0 "D1" V 4547 3078 50  0000 L CNN
+F 1 "LED" V 4638 3078 50  0000 L CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 4600 3000 50  0001 C CNN
+F 3 "~" H 4600 3000 50  0001 C CNN
+	1    4600 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 4350 5100 4350
+Connection ~ 5300 4350
+Wire Wire Line
+	5300 3900 5100 3900
+Connection ~ 5300 3900
+Wire Wire Line
+	5300 3900 5300 3450
+Wire Wire Line
+	5300 3450 5100 3450
+Connection ~ 5300 3450
+Wire Wire Line
+	5300 3450 5300 3250
+Wire Wire Line
+	5300 3250 5300 3000
+Wire Wire Line
+	5300 3000 5100 3000
+Connection ~ 5300 3250
+Wire Wire Line
+	4900 4350 4750 4350
+Wire Wire Line
+	4900 3900 4750 3900
+Wire Wire Line
+	4900 3450 4750 3450
+Wire Wire Line
+	4750 3000 4900 3000
+Wire Wire Line
+	3200 2650 3200 3000
+Wire Wire Line
+	3200 4350 3450 4350
+Wire Wire Line
+	3450 3900 3200 3900
+Connection ~ 3200 3900
+Wire Wire Line
+	3200 3900 3200 4350
+Wire Wire Line
+	3450 3450 3200 3450
+Connection ~ 3200 3450
+Wire Wire Line
+	3200 3450 3200 3900
+Wire Wire Line
+	3450 3000 3200 3000
+Connection ~ 3200 3000
+Wire Wire Line
+	3200 3000 3200 3450
+Wire Wire Line
+	4450 4350 4200 4350
+Wire Wire Line
+	3850 3900 4250 3900
+Wire Wire Line
+	3850 3450 4300 3450
+Wire Wire Line
+	3850 3000 4350 3000
+Wire Wire Line
+	3200 2650 4950 2650
+Wire Wire Line
+	4950 2550 4950 2650
+Connection ~ 4950 2650
+Wire Wire Line
+	4950 2650 5300 2650
+Wire Wire Line
+	5050 2550 5400 2550
+Wire Wire Line
+	5400 2550 5400 3150
+Wire Wire Line
+	5400 3150 5850 3150
+Wire Wire Line
+	5850 3150 5850 3250
+Wire Wire Line
+	5950 3250 5950 3100
+Wire Wire Line
+	5950 3100 5450 3100
+Wire Wire Line
+	5450 3100 5450 1600
+Wire Wire Line
+	5450 1600 4350 1600
+Wire Wire Line
+	4350 1600 4350 3000
+Connection ~ 4350 3000
+Wire Wire Line
+	4350 3000 4450 3000
+Wire Wire Line
+	6050 3250 6050 3050
+Wire Wire Line
+	6050 3050 5500 3050
+Wire Wire Line
+	5500 3050 5500 1550
+Wire Wire Line
+	5500 1550 4300 1550
+Wire Wire Line
+	4300 1550 4300 3450
+Connection ~ 4300 3450
+Wire Wire Line
+	4300 3450 4450 3450
+Wire Wire Line
+	6150 3250 6150 3000
+Wire Wire Line
+	6150 3000 5550 3000
+Wire Wire Line
+	5550 3000 5550 1500
+Wire Wire Line
+	5550 1500 4250 1500
+Wire Wire Line
+	4250 1500 4250 3900
+Connection ~ 4250 3900
+Wire Wire Line
+	4250 3900 4450 3900
+Wire Wire Line
+	6250 3250 6250 2950
+Wire Wire Line
+	6250 2950 5600 2950
+Wire Wire Line
+	5600 2950 5600 1450
+Wire Wire Line
+	5600 1450 4200 1450
+Wire Wire Line
+	4200 1450 4200 4350
+Connection ~ 4200 4350
+Wire Wire Line
+	4200 4350 3850 4350
+$Comp
+L panel_board:Geiger(-) J2
+U 1 1 5D746ADB
+P 5800 2250
+F 0 "J2" H 5522 2204 50  0000 R CNN
+F 1 "Geiger(-)" H 5522 2295 50  0000 R CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01_Pitch2.54mm" H 5800 2250 50  0001 C CNN
+F 3 "" H 5800 2250 50  0001 C CNN
+	1    5800 2250
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6250 2550 6150 2550
+Wire Wire Line
+	6150 2550 5800 2550
+Connection ~ 6150 2550
+Text Notes 5300 4500 0    100  ~ 0
++5V
+Text Notes 3100 2600 0    100  ~ 0
+GND
+Text Notes 4350 4850 0    100  ~ 0
+STATUS\nLEDS
+Text Notes 3350 4700 0    100  ~ 0
+TOGGLES
+$Comp
+L Device:C_Small C1
+U 1 1 5D71F315
+P 5300 2850
+F 0 "C1" V 5200 2750 50  0000 L CNN
+F 1 "C_Small" V 5350 2500 50  0000 L CNN
+F 2 "Capacitors_THT:C_Disc_D6.0mm_W2.5mm_P5.00mm" H 5300 2850 50  0001 C CNN
+F 3 "~" H 5300 2850 50  0001 C CNN
+	1    5300 2850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 2750 5300 2650
+Connection ~ 5300 2650
+Wire Wire Line
+	5300 2650 7100 2650
+Wire Wire Line
+	5300 2950 5300 3000
+Connection ~ 5300 3000
+$EndSCHEMATC

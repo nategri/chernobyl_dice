@@ -1,0 +1,3 @@
+(sym_lib_table
+  (lib (name rad_dice_logic_board)(type Legacy)(uri ${KIPRJMOD}/rad_dice_logic_board.lib)(options "")(descr ""))
+)

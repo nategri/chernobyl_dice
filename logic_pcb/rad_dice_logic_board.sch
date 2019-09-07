@@ -1,0 +1,427 @@
+EESchema Schematic File Version 4
+LIBS:rad_dice_logic_board-cache
+EELAYER 29 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L MCU_Module:Arduino_Nano_v3.x A1
+U 1 1 5D1FAAE6
+P 3450 3600
+F 0 "A1" H 3450 2511 50  0000 C CNN
+F 1 "Arduino_Nano_v3.x" H 3450 2420 50  0000 C CNN
+F 2 "Modules:Arduino_Nano" H 3600 2650 50  0001 L CNN
+F 3 "http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf" H 3450 2600 50  0001 C CNN
+	1    3450 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L rad_dice_logic_board:GROUND J6
+U 1 1 5D1FBE82
+P 3950 5750
+F 0 "J6" H 3572 5721 50  0000 R CNN
+F 1 "GROUND" H 3572 5812 50  0000 R CNN
+F 2 "Pin_Headers:Pin_Header_Angled_2x03_Pitch2.54mm" H 4000 5750 50  0001 C CNN
+F 3 "" H 4000 5750 50  0001 C CNN
+	1    3950 5750
+	-1   0    0    1   
+$EndComp
+$Comp
+L rad_dice_logic_board:NIXIE-CONNECTOR-CS J2
+U 1 1 5D1FE8B8
+P 2050 3650
+F 0 "J2" V 2450 3900 50  0000 C CNN
+F 1 "NIXIE-CONNECTOR-CS" V 1550 3850 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Angled_1x08_Pitch2.54mm" H 1950 3650 50  0001 C CNN
+F 3 "" H 1950 3650 50  0001 C CNN
+	1    2050 3650
+	0    -1   1    0   
+$EndComp
+$Comp
+L rad_dice_logic_board:SAMPLE-GEIGER-CONNECTOR J1
+U 1 1 5D201FF1
+P 1050 4550
+F 0 "J1" V 850 4850 50  0000 C CNN
+F 1 "SAMPLE-GEIGER-CONNECTOR" V 1374 4517 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Angled_1x04_Pitch2.54mm" H 1050 4550 50  0001 C CNN
+F 3 "" H 1050 4550 50  0001 C CNN
+	1    1050 4550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L rad_dice_logic_board:NIXIE-CONNECTOR-SCK-MOSI J3
+U 1 1 5D202CFF
+P 2200 5200
+F 0 "J3" V 2100 5550 50  0000 C CNN
+F 1 "NIXIE-CONNECTOR-SCK-MOSI" V 2400 5600 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Angled_1x02_Pitch2.54mm" H 2200 5200 50  0001 C CNN
+F 3 "" H 2200 5200 50  0001 C CNN
+	1    2200 5200
+	0    -1   -1   0   
+$EndComp
+$Comp
+L rad_dice_logic_board:SWITCH-CONNECTOR J4
+U 1 1 5D203DDE
+P 3200 5800
+F 0 "J4" H 2922 5696 50  0000 R CNN
+F 1 "SWITCH-CONNECTOR" H 2922 5787 50  0000 R CNN
+F 2 "Pin_Headers:Pin_Header_Angled_1x04_Pitch2.54mm" H 3250 5800 50  0001 C CNN
+F 3 "" H 3250 5800 50  0001 C CNN
+	1    3200 5800
+	1    0    0    1   
+$EndComp
+$Comp
+L rad_dice_logic_board:TOGGLE-CONNECTOR J7
+U 1 1 5D208AC6
+P 5400 2950
+F 0 "J7" V 5354 3178 50  0000 L CNN
+F 1 "TOGGLE-CONNECTOR" V 5445 3178 50  0000 L CNN
+F 2 "Pin_Headers:Pin_Header_Angled_2x04_Pitch2.54mm" H 5450 2950 50  0001 C CNN
+F 3 "" H 5450 2950 50  0001 C CNN
+	1    5400 2950
+	0    1    1    0   
+$EndComp
+$Comp
+L rad_dice_logic_board:ADAFRUIT-DS3231 U1
+U 1 1 5D20C80C
+P 5000 3950
+F 0 "U1" V 5041 4178 50  0000 L CNN
+F 1 "ADAFRUIT-DS3231" V 4950 4178 50  0000 L CNN
+F 2 "rad_dice_logic_board:ADAFRUIT-DS3231" H 5000 3950 50  0001 C CNN
+F 3 "" H 5000 3950 50  0001 C CNN
+	1    5000 3950
+	0    1    -1   0   
+$EndComp
+$Comp
+L Device:R_Small R1
+U 1 1 5D213B93
+P 1400 4400
+F 0 "R1" V 1350 4550 50  0000 C CNN
+F 1 "R" V 1400 4400 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" H 1400 4400 50  0001 C CNN
+F 3 "~" H 1400 4400 50  0001 C CNN
+	1    1400 4400
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R2
+U 1 1 5D2148AD
+P 1400 4500
+F 0 "R2" V 1350 4650 50  0000 C CNN
+F 1 "R" V 1400 4500 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" H 1400 4500 50  0001 C CNN
+F 3 "~" H 1400 4500 50  0001 C CNN
+	1    1400 4500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R3
+U 1 1 5D215179
+P 1400 4600
+F 0 "R3" V 1350 4750 50  0000 C CNN
+F 1 "R" V 1400 4600 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" H 1400 4600 50  0001 C CNN
+F 3 "~" H 1400 4600 50  0001 C CNN
+	1    1400 4600
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R4
+U 1 1 5D218075
+P 4950 2600
+F 0 "R4" V 4900 2450 50  0000 C CNN
+F 1 "R" V 4950 2600 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" H 4950 2600 50  0001 C CNN
+F 3 "~" H 4950 2600 50  0001 C CNN
+	1    4950 2600
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R5
+U 1 1 5D2188F0
+P 4950 2800
+F 0 "R5" V 4900 2650 50  0000 C CNN
+F 1 "R" V 4950 2800 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" H 4950 2800 50  0001 C CNN
+F 3 "~" H 4950 2800 50  0001 C CNN
+	1    4950 2800
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R6
+U 1 1 5D219040
+P 4950 3000
+F 0 "R6" V 4900 2850 50  0000 C CNN
+F 1 "R" V 4950 3000 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" H 4950 3000 50  0001 C CNN
+F 3 "~" H 4950 3000 50  0001 C CNN
+	1    4950 3000
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R_Small R7
+U 1 1 5D21952A
+P 4950 3200
+F 0 "R7" V 4900 3050 50  0000 C CNN
+F 1 "R" V 4950 3200 50  0000 C CNN
+F 2 "Resistors_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" H 4950 3200 50  0001 C CNN
+F 3 "~" H 4950 3200 50  0001 C CNN
+	1    4950 3200
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	5050 2600 5100 2600
+Wire Wire Line
+	5050 2800 5100 2800
+Wire Wire Line
+	5050 3000 5100 3000
+Wire Wire Line
+	5050 3200 5100 3200
+Wire Wire Line
+	3950 3800 4000 3800
+Wire Wire Line
+	3950 3900 4050 3900
+Wire Wire Line
+	3950 4200 4100 4200
+Wire Wire Line
+	4100 4200 4100 3000
+Wire Wire Line
+	4100 3000 4700 3000
+Wire Wire Line
+	3950 4300 4150 4300
+Wire Wire Line
+	4150 4300 4150 3200
+Wire Wire Line
+	4150 3200 4700 3200
+Wire Wire Line
+	4200 4300 4500 4300
+Wire Wire Line
+	4500 4000 3950 4000
+Wire Wire Line
+	4500 4100 3950 4100
+Wire Wire Line
+	3700 5550 3800 5550
+Wire Wire Line
+	3800 5550 3900 5550
+Connection ~ 3800 5550
+Wire Wire Line
+	4000 5550 4100 5550
+Connection ~ 4100 5550
+Wire Wire Line
+	4100 5550 4200 5550
+Wire Wire Line
+	3900 5550 4000 5550
+Connection ~ 3900 5550
+Connection ~ 4000 5550
+Wire Wire Line
+	4500 4200 4250 4200
+Wire Wire Line
+	3950 3600 4400 3600
+Wire Wire Line
+	1500 4500 1650 4500
+Wire Wire Line
+	1650 4500 1650 4600
+Wire Wire Line
+	1650 4600 1500 4600
+Wire Wire Line
+	1500 4400 1650 4400
+Wire Wire Line
+	1650 4400 1650 4500
+Connection ~ 1650 4500
+Wire Wire Line
+	2950 4100 2450 4100
+Wire Wire Line
+	2450 4100 2450 5150
+Wire Wire Line
+	2450 5250 2950 5250
+Wire Wire Line
+	2950 5250 2950 4300
+Wire Wire Line
+	2950 4200 2900 4200
+Wire Wire Line
+	2900 4200 2900 5300
+Wire Wire Line
+	2900 5300 3150 5300
+Wire Wire Line
+	3150 5300 3150 5500
+Wire Wire Line
+	2950 4000 2850 4000
+Wire Wire Line
+	2850 4000 2850 5500
+Wire Wire Line
+	2850 5500 3050 5500
+Wire Wire Line
+	2950 3900 2800 3900
+Wire Wire Line
+	2800 3900 2800 5350
+Wire Wire Line
+	2800 5350 3250 5350
+Wire Wire Line
+	3250 5350 3250 5500
+Wire Wire Line
+	3950 3700 4300 3700
+Wire Wire Line
+	4300 3700 4300 5500
+Wire Wire Line
+	4300 5500 3350 5500
+Wire Wire Line
+	5100 3300 4700 3300
+Wire Wire Line
+	4700 3300 4700 3200
+Connection ~ 4700 3200
+Wire Wire Line
+	4700 3200 4850 3200
+Wire Wire Line
+	5100 3100 4700 3100
+Wire Wire Line
+	4700 3100 4700 3000
+Connection ~ 4700 3000
+Wire Wire Line
+	4700 3000 4850 3000
+Wire Wire Line
+	5100 2900 4700 2900
+Wire Wire Line
+	4700 2900 4700 2800
+Wire Wire Line
+	4700 2800 4850 2800
+Wire Wire Line
+	5100 2700 4700 2700
+Wire Wire Line
+	4700 2700 4700 2600
+Wire Wire Line
+	4700 2600 4850 2600
+Wire Wire Line
+	2400 3400 2350 3400
+Wire Wire Line
+	2450 3300 2450 3500
+Wire Wire Line
+	2450 3500 2350 3500
+Wire Wire Line
+	2500 3400 2500 3600
+Wire Wire Line
+	2500 3600 2350 3600
+Wire Wire Line
+	2550 3500 2550 3700
+Wire Wire Line
+	2550 3700 2350 3700
+Wire Wire Line
+	2600 3600 2600 3800
+Wire Wire Line
+	2600 3800 2350 3800
+Wire Wire Line
+	2650 3700 2650 3900
+Wire Wire Line
+	2650 3900 2350 3900
+Wire Wire Line
+	2450 3300 2950 3300
+Wire Wire Line
+	2500 3400 2950 3400
+Wire Wire Line
+	2550 3500 2950 3500
+Wire Wire Line
+	2600 3600 2950 3600
+Wire Wire Line
+	2650 3700 2950 3700
+Wire Wire Line
+	2350 4000 2700 4000
+Wire Wire Line
+	2700 4000 2700 3800
+Wire Wire Line
+	2700 3800 2950 3800
+Wire Wire Line
+	2950 3200 2750 3200
+Wire Wire Line
+	2750 3200 2750 4700
+Wire Wire Line
+	2750 4700 1300 4700
+Wire Wire Line
+	4400 4650 1650 4650
+Wire Wire Line
+	1650 4650 1650 4600
+Wire Wire Line
+	4400 3600 4400 4650
+Connection ~ 1650 4600
+Connection ~ 4150 2000
+Wire Wire Line
+	4150 2000 4200 2000
+Wire Wire Line
+	4050 2000 4150 2000
+Connection ~ 4050 2000
+Wire Wire Line
+	3950 2000 4050 2000
+Connection ~ 3950 2000
+Connection ~ 3850 2000
+Wire Wire Line
+	3850 2000 3950 2000
+Connection ~ 3750 2000
+Wire Wire Line
+	3750 2000 3850 2000
+Wire Wire Line
+	3650 2000 3750 2000
+$Comp
+L rad_dice_logic_board:POWER-5V J5
+U 1 1 5D1FDF4F
+P 3900 1800
+F 0 "J5" H 4278 1838 50  0000 L CNN
+F 1 "POWER-5V" H 4278 1747 50  0000 L CNN
+F 2 "Pin_Headers:Pin_Header_Angled_2x03_Pitch2.54mm" H 3950 1800 50  0001 C CNN
+F 3 "" H 3950 1800 50  0001 C CNN
+	1    3900 1800
+	1    0    0    -1  
+$EndComp
+Connection ~ 3650 2000
+Wire Wire Line
+	4250 4200 4250 5550
+Wire Wire Line
+	4250 5550 4200 5550
+Connection ~ 4200 5550
+Wire Wire Line
+	3700 5550 3550 5550
+Wire Wire Line
+	3550 5550 3550 4600
+Connection ~ 3700 5550
+Wire Wire Line
+	3650 2000 3650 2600
+Wire Wire Line
+	4200 2000 4200 4300
+Wire Wire Line
+	4000 3800 4000 2450
+Wire Wire Line
+	4000 2450 2350 2450
+Wire Wire Line
+	2350 2450 2350 3300
+Wire Wire Line
+	4050 3900 4050 2400
+Wire Wire Line
+	4050 2400 2400 2400
+Wire Wire Line
+	2400 2400 2400 3400
+Wire Wire Line
+	2950 3000 2950 2150
+Wire Wire Line
+	2950 2150 4700 2150
+Wire Wire Line
+	4700 2150 4700 2600
+Connection ~ 4700 2600
+Wire Wire Line
+	2950 3100 2900 3100
+Wire Wire Line
+	2900 3100 2900 2200
+Wire Wire Line
+	2900 2200 4650 2200
+Wire Wire Line
+	4650 2200 4650 2800
+Wire Wire Line
+	4650 2800 4700 2800
+Connection ~ 4700 2800
+$EndSCHEMATC
