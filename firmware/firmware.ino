@@ -1,5 +1,8 @@
-#include <RTClib.h>
 #include <stdio.h>
+#include <EEPROM.h>
+
+#include "exixe.h"
+#include <RTClib.h>
 
 #define ROT1 12
 #define ROT2 9
@@ -23,16 +26,19 @@
 
 #define UV_LED_PIN 14
 
-#include "exixe.h"
-
 #define ZERO_PAD 1
 #define NO_ZERO_PAD 0
+
+// Address to store whether or not device is in "turbo mode"
+// Increment this if it starts acting funny (WOW YOU'VE TOGGLED IT A LOT HUH)
+#define EEPROM_ADDR 11
 
 class Nixies {
   public:
     static char* number_to_digits(unsigned long, const unsigned char);
     Nixies();
     void display(char*);
+    void display_led(char*);
     void clear();
   private:
     exixe* _nixie[8];
@@ -93,11 +99,24 @@ void Nixies::display(char* digit) {
   for(char i=0; i<8; i++) {
     if(digit[i] < 0) {
       this->_nixie[i]->clear();
-      //this->_nixie[i]->set_led(0, 0, 0);
+      this->_nixie[i]->set_led(0, 0, 0);
     }
     else {
-      //this->_nixie[i]->set_led(0, 0, 0);
+      this->_nixie[i]->set_led(0, 0, 0);
       this->_nixie[i]->show_digit(digit[i], 127, 0);
+    }
+  }
+}
+
+void Nixies::display_led(char* digit) {
+  for(char i=0; i<8; i++) {
+    if(digit[i] < 0) {
+      this->_nixie[i]->clear();
+      this->_nixie[i]->set_led(0, 0, 0);
+    }
+    else {
+      this->_nixie[i]->clear();
+      this->_nixie[i]->set_led(127, 0, 0);
     }
   }
 }
@@ -117,6 +136,8 @@ volatile unsigned long trigCount;
 volatile unsigned long ringBuff[256];
 
 volatile uint8_t ringBuffWriteHead;
+
+uint8_t turboMode;
 
 Nixies* nixies;
 
@@ -196,10 +217,33 @@ uint8_t getRandByte(unsigned char callingPosition) {
 
     digits[currBit-1] = newBit;
 
-    nixies->display(digits);
+    if(!turboMode) {
+      nixies->display(digits);
+    }
+    else {
+      nixies->display_led(digits);
+    }
   }
 
   return randByte;
+}
+
+uint16_t readToggles() {
+    uint16_t toggleNum = 0;
+    if(digitalRead(TOGGLE1) == LOW) {
+      toggleNum += 16;
+    }
+    if(digitalRead(TOGGLE2) == LOW) {
+      toggleNum += 8;
+    }
+    if(analogRead(TOGGLE3) < 50) {
+      toggleNum += 4;
+    }
+    if(analogRead(TOGGLE4) < 50) {
+      toggleNum += 2;
+    }
+
+    return toggleNum;
 }
 
 void setup() {
@@ -229,6 +273,15 @@ void setup() {
 
   // Init LED flash pin
   pinMode(UV_LED_PIN, OUTPUT);
+
+  // Is device in turbo mode?
+  if(EEPROM.read(EEPROM_ADDR) == 0xFF) {
+    // NOTE: 0xFF is what's stored when the Arduino is factory-fresh
+    turboMode = 0;
+  }
+  else if(EEPROM.read(EEPROM_ADDR) == 0x00) {
+    turboMode = 1;
+  }
 
   // Attach geiger counter interrupt
   pinMode(2, INPUT_PULLUP);
@@ -292,35 +345,74 @@ void loop() {
   else if (rotPos2 == LOW) {
     // STREAMING MODE
     nixies->clear();
-    uint8_t randByte = getRandByte(ROT2);
+
+    uint16_t delayTime;
+    if(turboMode) {
+      delayTime = 10;
+    }
+    else {
+      delayTime = 1000;
+    }
+
+    uint16_t toggleNum = readToggles();
+    if(toggleNum == 0) {
+      toggleNum = 256;
+    }
+
+    uint8_t randByte;
+
+    while(1) {
+      randByte = getRandByte(ROT2);
+      if(randByte < (256 - (256 % toggleNum))) {
+        break;
+      }
+    }
 
     if(digitalRead(ROT2) == LOW) {
-      Serial.begin(9600);
-      Serial.println(randByte);
+      Serial.begin(300);
+      if(toggleNum == 256) {
+        Serial.write(randByte);
+      }
+      else if(toggleNum != 256) {
+        Serial.write((randByte % toggleNum) + 1);
+      }
       Serial.end();
-      delay(1000);
+      delay(delayTime);
 
-      char* randDigits = Nixies::number_to_digits(randByte, NO_ZERO_PAD);
-      nixies->display(randDigits);
-      delay(1000);
+      char* displayDigits;
+
+      if(!turboMode) {
+        if(toggleNum == 256) {
+          displayDigits = Nixies::number_to_digits(randByte, NO_ZERO_PAD);
+        }
+        else if(toggleNum != 256) {
+          displayDigits = Nixies::number_to_digits((randByte % toggleNum) + 1, NO_ZERO_PAD);
+        }
+        nixies->display(displayDigits);
+        delay(delayTime);
+      }
+    }
+
+    if(digitalRead(PUSHBUTTON) == LOW) {
+      char all_lit[] = {0, 0, 0, 0, 0, 0, 0, 0};
+      char all_off[] = {-1, -1, -1, -1, -1, -1, -1, -1};
+      while(1) {
+        nixies->display_led(all_lit);
+        delay(100);
+        nixies->display_led(all_off);
+        delay(100);
+        if(digitalRead(PUSHBUTTON) == HIGH) {
+          EEPROM.write(EEPROM_ADDR, ~EEPROM.read(EEPROM_ADDR));
+          turboMode = !turboMode;
+          break;
+        }
+      }
     }
   }
   else if(rotPos3 == LOW) {
     nixies->clear();
     
-    unsigned int toggleNum = 0;
-    if(digitalRead(TOGGLE1) == LOW) {
-      toggleNum += 16;
-    }
-    if(digitalRead(TOGGLE2) == LOW) {
-      toggleNum += 8;
-    }
-    if(analogRead(TOGGLE3) < 50) {
-      toggleNum += 4;
-    }
-    if(analogRead(TOGGLE4) < 50) {
-      toggleNum += 2;
-    }
+    uint8_t toggleNum = readToggles();
 
     if(toggleNum != 0) {
       char* displayDigits = Nixies::number_to_digits(toggleNum, NO_ZERO_PAD);

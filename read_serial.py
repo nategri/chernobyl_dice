@@ -1,6 +1,6 @@
 import serial
 
-serial_conn = serial.Serial('/dev/cu.usbserial-AC00MB9L', 19200)
+serial_conn = serial.Serial('/dev/cu.usbserial-AC00MB9L', 300)
 
 f = open('rand.binary', 'wb')
 
