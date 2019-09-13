@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <EEPROM.h>
 
 #include "exixe.h"
@@ -133,7 +132,7 @@ volatile uint8_t didTrigger;
 volatile unsigned long prevTrigTime;
 volatile unsigned long trigCount;
 
-volatile unsigned long ringBuff[256];
+volatile uint8_t ringBuff[256];
 
 volatile uint8_t ringBuffWriteHead;
 
