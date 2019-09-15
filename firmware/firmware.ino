@@ -1,18 +1,4 @@
-#define ROT1 12
-#define ROT2 9
-#define ROT3 15
-
-#define TOGGLE1 16
-#define TOGGLE2 17
-#define TOGGLE3 20
-#define TOGGLE4 21
-
-#define PUSHBUTTON 10
-
 #define UV_LED_PIN 14
-
-#define ZERO_PAD 1
-#define NO_ZERO_PAD 0
 
 // Address to store whether or not device is in "turbo mode"
 // Increment this if it starts acting funny (WOW YOU'VE TOGGLED IT A LOT HUH)
@@ -20,10 +6,12 @@
 
 #include <EEPROM.h>
 
-#include "exixe.h"
 #include "RTClib.h"
 
+#include "exixe.h"
+
 #include "nixies.h"
+#include "controlpanel.h"
 
 RTC_DS3231 rtc;
 
@@ -38,6 +26,7 @@ volatile uint8_t ringBuffWriteHead;
 uint8_t turboMode;
 
 Nixies* nixies;
+ControlPanel* controlPanel;
 
 void geigerEvent() {
   digitalWrite(UV_LED_PIN, HIGH);
@@ -84,7 +73,7 @@ uint8_t getRandByte(unsigned char callingPosition) {
     uint8_t bitContribution = 0b00000001 << currBit;
     
     while(1) {
-      if(digitalRead(callingPosition) != LOW) {
+      if(controlPanel->switch_state(callingPosition) != LOW) {
         return 0;
       }
 
@@ -128,16 +117,16 @@ uint8_t getRandByte(unsigned char callingPosition) {
 
 uint16_t readToggles() {
     uint16_t toggleNum = 0;
-    if(digitalRead(TOGGLE1) == LOW) {
+    if(controlPanel->switch_state(TOGGLE1) == LOW) {
       toggleNum += 16;
     }
-    if(digitalRead(TOGGLE2) == LOW) {
+    if(controlPanel->switch_state(TOGGLE2) == LOW) {
       toggleNum += 8;
     }
-    if(analogRead(TOGGLE3) < 50) {
+    if(controlPanel->switch_state(TOGGLE3) == LOW) {
       toggleNum += 4;
     }
-    if(analogRead(TOGGLE4) < 50) {
+    if(controlPanel->switch_state(TOGGLE4) == LOW) {
       toggleNum += 2;
     }
 
@@ -145,20 +134,12 @@ uint16_t readToggles() {
 }
 
 void setup() {
-  pinMode(ROT1, INPUT_PULLUP);
-  pinMode(ROT2, INPUT_PULLUP);
-  pinMode(ROT3, INPUT_PULLUP);
-
-  pinMode(TOGGLE1, INPUT_PULLUP);
-  pinMode(TOGGLE2, INPUT_PULLUP);
-  // NB: Toggles 3 and 4 can only use analogRead(), cool
-
-  pinMode(PUSHBUTTON, INPUT_PULLUP);
-  
+  // Init real time clock
   rtc.begin();
   
   // put your setup code here, to run once:
   nixies = new Nixies();
+  controlPanel = new ControlPanel();
 
   ringBuffWriteHead = 0;
   prevTrigTime = 0;
@@ -188,9 +169,9 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  unsigned int rotPos1 = digitalRead(ROT1);
-  unsigned int rotPos2 = digitalRead(ROT2);
-  unsigned int rotPos3 = digitalRead(ROT3);
+  unsigned int rotPos1 = controlPanel->switch_state(ROTARYPOSITION1);
+  unsigned int rotPos2 = controlPanel->switch_state(ROTARYPOSITION2);
+  unsigned int rotPos3 = controlPanel->switch_state(ROTARYPOSITION3);
 
   if((!rotPos2 || !rotPos3) && (trigCount < 20)) {
     // Wait to burn in some events
@@ -216,21 +197,21 @@ void loop() {
     nixies->display(time_digits);
     delay(10);
 
-    if(digitalRead(PUSHBUTTON) == LOW) {
+    if(controlPanel->switch_state(PUSHBUTTON) == LOW) {
       while(true) {
-        if(digitalRead(PUSHBUTTON) == HIGH) {
+        if(controlPanel->switch_state(PUSHBUTTON) == HIGH) {
           nixies->clear();
           break;
         }
       }
       delay(200);
       while(true) {
-        if(digitalRead(ROT1) != LOW) {
+        if(controlPanel->switch_state(ROTARYPOSITION1) != LOW) {
           break;
         }
-        if(digitalRead(PUSHBUTTON) == LOW) {
+        if(controlPanel->switch_state(PUSHBUTTON) == LOW) {
           while(true) {
-            if(digitalRead(PUSHBUTTON) == HIGH) {
+            if(controlPanel->switch_state(PUSHBUTTON) == HIGH) {
               delay(200);
               break;
             }
@@ -260,13 +241,13 @@ void loop() {
     uint8_t randByte;
 
     while(1) {
-      randByte = getRandByte(ROT2);
+      randByte = getRandByte(ROTARYPOSITION2);
       if(randByte < (256 - (256 % toggleNum))) {
         break;
       }
     }
 
-    if(digitalRead(ROT2) == LOW) {
+    if(controlPanel->switch_state(ROTARYPOSITION2) == LOW) {
       Serial.begin(300);
       if(toggleNum == 256) {
         Serial.write(randByte);
@@ -291,7 +272,7 @@ void loop() {
       }
     }
 
-    if(digitalRead(PUSHBUTTON) == LOW) {
+    if(controlPanel->switch_state(PUSHBUTTON) == LOW) {
       char all_lit[] = {0, 0, 0, 0, 0, 0, 0, 0};
       char all_off[] = {-1, -1, -1, -1, -1, -1, -1, -1};
       while(1) {
@@ -299,7 +280,7 @@ void loop() {
         delay(100);
         nixies->display_led(all_off);
         delay(100);
-        if(digitalRead(PUSHBUTTON) == HIGH) {
+        if(controlPanel->switch_state(PUSHBUTTON) == HIGH) {
           EEPROM.write(EEPROM_ADDR, ~EEPROM.read(EEPROM_ADDR));
           turboMode = !turboMode;
           break;
@@ -323,11 +304,11 @@ void loop() {
       nixies->clear();
     }
 
-    if((digitalRead(PUSHBUTTON) == LOW) && (toggleNum != 0)) {
+    if((controlPanel->switch_state(PUSHBUTTON) == LOW) && (toggleNum != 0)) {
 
       uint8_t randByte;
       while(1) {
-        randByte = getRandByte(ROT3);
+        randByte = getRandByte(ROTARYPOSITION3);
         if(randByte < (256 - (256 % toggleNum))) {
           break;
         }
@@ -335,13 +316,13 @@ void loop() {
       delay(500);
       
       char* displayDigits = Nixies::number_to_digits((randByte % toggleNum) + 1, NO_ZERO_PAD);
-      if(digitalRead(ROT3) == LOW) {
+      if(controlPanel->switch_state(ROTARYPOSITION3) == LOW) {
         while(1) {
-          if(digitalRead(ROT3) != LOW) {
+          if(controlPanel->switch_state(ROTARYPOSITION3) != LOW) {
             break;
           }
           nixies->display(displayDigits);
-          if(digitalRead(PUSHBUTTON) == LOW) {
+          if(controlPanel->switch_state(PUSHBUTTON) == LOW) {
             break;
           }
         }

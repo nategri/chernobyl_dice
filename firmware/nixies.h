@@ -1,5 +1,8 @@
-#ifndef NIXIES_HPP
-#define NIXIES_HPP
+#ifndef NIXIES_H
+#define NIXIES_H
+
+#define ZERO_PAD 1
+#define NO_ZERO_PAD 0
 
 #define NIX1 0
 #define NIX2 1
