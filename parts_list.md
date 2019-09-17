@@ -13,7 +13,7 @@
 | High Voltage Module | 1 | https://www.ebay.com/itm/322511957768 | HV source for Nixie Display Board |
 | LD1117V33 Voltage Regulator | 1 | https://www.amazon.com/gp/product/B01N09X4E8 | U1 on Nixie Display Board |
 | .1 uF Capacitor | 1 | | C1 on Nixie Display Board | |
-| 10 uF Capacitor | 1 | | C2 on Nixie Display Board | |
+| 10 uF Capacitor | 2 | | C1 on Control Panel Board, C2 on Nixie Display Board | |
 | UV LED (5 mm) | 3 | | For uranium sample holder | |
 | 3-Position Rotary Switch | 1 | https://www.amazon.com/gp/product/B07JLYHLZD | |
 | Toggle Switch | 4 | https://www.amazon.com/gp/product/B01M3261RL | |

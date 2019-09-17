@@ -72,7 +72,7 @@ void Nixies::display_led(char* digit) {
     }
     else {
       this->_nixie[i]->clear();
-      this->_nixie[i]->set_led(127, 0, 0);
+      this->_nixie[i]->set_led(127, 4, 0);
     }
   }
 }
