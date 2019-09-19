@@ -1,6 +1,6 @@
 # Parts List
 
-<div markdown="1" style="font-size:4px">
+<div markdown="1" style="width:40%">
 
 | Item | Quantity | Link | Notes |
 | --- | --- | --- | --- |
