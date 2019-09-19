@@ -1,7 +1,5 @@
 # Parts List
 
-<div markdown="1" style="width:40%">
-
 | Item | Quantity | Link | Notes |
 | --- | --- | --- | --- |
 | Six uranium glass marbles (5/8" diameter) | 1 | http://unitednuclear.com/index.php?main_page=product_info&products_id=1143 | |
@@ -34,5 +32,4 @@
 | Female-Female Dupont Wire (20 cm) | Some | | |
 | Brass Hex Standoffs | Lots | | |
 | M3 Screws | Lots | | |
-
-</div>
+</sub>
