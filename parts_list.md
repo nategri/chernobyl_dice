@@ -1,5 +1,6 @@
 # Parts List
 
+<div markdown="1" style="font-size:8px">
 | Item | Quantity | Link | Notes |
 | --- | --- | --- | --- |
 | Six uranium glass marbles (5/8" diameter) | 1 | http://unitednuclear.com/index.php?main_page=product_info&products_id=1143 | |
@@ -28,6 +29,8 @@
 | Logic Board | 1 | https://oshpark.com/ | File: logic_pcb/rad_dice_logic_board.kicad_pcb |
 | Control Panel Board | 1 | https://oshpark.com/ | front_panel_pcb/panel_board.kicad_pcb |
 | Panel Mount USB Cable | 1 | https://www.amazon.com/gp/product/B00S6GY0VU | |
-| Female-Female Dupont Wires | Lots | | |
+| Female-Female Dupont Wire (10 cm) | Lots | | |
+| Female-Female Dupont Wire (20 cm) | Some | | |
 | Brass Hex Standoffs | Lots | | |
 | M3 Screws | Lots | | |
+</div>
