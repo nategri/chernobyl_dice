@@ -1,38 +1,223 @@
 # Parts List
 
-<sub>
+<table width="400">
 
-| Item | Quantity | Link | Notes |
-| --- | --- | --- | --- |
-| Six uranium glass marbles (5/8" diameter) | 1 | http://unitednuclear.com/index.php?main_page=product_info&products_id=1143 | |
-| Geiger counter board | 1 | https://rhelectronics.net/store/radiation-detector-geiger-counter-diy-kit-second-edition.html | |
-| Arduino Nano | 1 | https://www.amazon.com/gp/product/B0097AU5OU 
-| Adafruit DS3231 RTC Module | 1 | https://www.adafruit.com/product/3013 | |
-| MCP23008 I/O Expander | 1 | https://www.adafruit.com/product/593 | U1 on Control Panel Board |
-| 5 kOhm Resistor | 4 | | R1-4 on Control Panel Board |
-| Nixie Tube Driver Module | 8 | https://www.tindie.com/products/dekuNukem/exixe-miniture-nixie-tube-driver-modules/ | |
-| IN-12 Nixie Tube | 8 | https://www.ebay.com/itm/332809634199 | |
-| High Voltage Module | 1 | https://www.ebay.com/itm/322511957768 | HV source for Nixie Display Board |
-| LD1117V33 Voltage Regulator | 1 | https://www.amazon.com/gp/product/B01N09X4E8 | U1 on Nixie Display Board |
-| .1 uF Capacitor | 1 | | C1 on Nixie Display Board | |
-| 10 uF Capacitor | 2 | | C1 on Control Panel Board, C2 on Nixie Display Board | |
-| UV LED (5 mm) | 3 | | For uranium sample holder | |
-| 3-Position Rotary Switch | 1 | https://www.amazon.com/gp/product/B07JLYHLZD | |
-| Toggle Switch | 4 | https://www.amazon.com/gp/product/B01M3261RL | |
-| LED Holder (3 mm) | 4 | https://www.amazon.com/gp/product/B07D9HCNDX | |
-| Pushbutton | 1 | https://www.amazon.com/gp/product/B079KNH25F | |
-| Red LED (3 mm) | 4 | | |
-| Stainless Steel Front Panel | 1 | https://www.oshcut.com/ | File: parts/front_panel.dxf |
-| Enclosure | 1 | | Files: parts/enclosure_[big, small]_half.stl |
-| Rotary Switch Lock Plate | 1 | | File: parts/lock_plate.stl |
-| Acrylic Rear Panel | 1 | https://www.sculpteo.com/en/ | File: parts/rear_panel.svg |
-| Nixie Display Board | 1 | https://oshpark.com/ | File: display_pcb/nixie_display_board.kicad_pcb |
-| Logic Board | 1 | https://oshpark.com/ | File: logic_pcb/rad_dice_logic_board.kicad_pcb |
-| Control Panel Board | 1 | https://oshpark.com/ | front_panel_pcb/panel_board.kicad_pcb |
-| Panel Mount USB Cable | 1 | https://www.amazon.com/gp/product/B00S6GY0VU | |
-| Female-Female Dupont Wire (10 cm) | Lots | | |
-| Female-Female Dupont Wire (20 cm) | Some | | |
-| Brass Hex Standoffs | Lots | | |
-| M3 Screws | Lots | | |
+<tr>
+<td>Item</td>
+<td>Quantity</td>
+<td>Link</td>
+<td>Notes</td>
+</tr>
 
-</sub>
+<tr>
+<td>Six uranium glass marbles (5/8" diameter)</td>
+<td>1</td>
+<td>http://unitednuclear.com/index.php?main_page=product_info&products_id=1143</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Geiger counter board</td>
+<td>1</td>
+<td>https://rhelectronics.net/store/radiation-detector-geiger-counter-diy-kit-second-edition.html</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Arduino Nano</td>
+<td>1</td>
+<td>https://www.amazon.com/gp/product/B0097AU5OU </td>
+<td></td>
+</tr>
+
+<tr>
+<td>Adafruit DS3231 RTC Module</td>
+<td>1</td>
+<td>https://www.adafruit.com/product/3013</td>
+<td></td>
+</tr>
+
+<tr>
+<td>MCP23008 I/O Expander</td>
+<td>1</td>
+<td>https://www.adafruit.com/product/593</td>
+<td>U1 on Control Panel Board</td>
+</tr>
+
+<tr>
+<td>5 kOhm Resistor</td>
+<td>4</td>
+<td></td>
+<td>R1-4 on Control Panel Board</td>
+</tr>
+
+<tr>
+<td>Nixie Tube Driver Module</td>
+<td>8</td>
+<td>https://www.tindie.com/products/dekuNukem/exixe-miniture-nixie-tube-driver-modules/</td>
+<td></td>
+</tr>
+
+<tr>
+<td>IN-12 Nixie Tube</td>
+<td>8</td>
+<td>https://www.ebay.com/itm/332809634199</td>
+<td></td>
+</tr>
+
+<tr>
+<td>High Voltage Module</td>
+<td>1</td>
+<td>https://www.ebay.com/itm/322511957768</td>
+<td>HV source for Nixie Display Board</td>
+</tr>
+
+<tr>
+<td>LD1117V33 Voltage Regulator</td>
+<td>1</td>
+<td>https://www.amazon.com/gp/product/B01N09X4E8</td>
+<td>U1 on Nixie Display Board</td>
+</tr>
+
+<tr>
+<td>.1 uF Capacitor</td>
+<td>1</td>
+<td></td>
+<td>C1 on Nixie Display Board</td>
+</tr>
+
+<tr>
+<td>10 uF Capacitor</td>
+<td>2</td>
+<td></td>
+<td>C1 on Control Panel Board, C2 on Nixie Display Board</td>
+</tr>
+
+<tr>
+<td>UV LED (5 mm)</td>
+<td>3</td>
+<td></td>
+<td>For uranium sample holder</td>
+</tr>
+
+<tr>
+<td>3-Position Rotary Switch</td>
+<td>1</td>
+<td>https://www.amazon.com/gp/product/B07JLYHLZD</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Toggle Switch</td>
+<td>4</td>
+<td>https://www.amazon.com/gp/product/B01M3261RL</td>
+<td></td>
+</tr>
+
+<tr>
+<td>LED Holder (3 mm)</td>
+<td>4</td>
+<td>https://www.amazon.com/gp/product/B07D9HCNDX</td>
+<td></td>
+<td></tr>
+
+<tr>
+<td>Pushbutton</td>
+<td>1</td>
+<td>https://www.amazon.com/gp/product/B079KNH25F</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Red LED (3 mm)</td>
+<td>4</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Stainless Steel Front Panel</td>
+<td>1</td>
+<td>https://www.oshcut.com/</td>
+<td>File: parts/front_panel.dxf</td>
+</tr>
+
+<tr>
+<td>Enclosure</td>
+<td>1</td>
+<td></td>
+<td>Files: parts/enclosure_[big, small]_half.stl</td>
+</tr>
+
+<tr>
+<td>Rotary Switch Lock Plate</td>
+<td>1</td>
+<td></td>
+<td>File: parts/lock_plate.stl</td>
+</tr>
+
+<tr>
+<td>Acrylic Rear Panel</td>
+<td>1</td>
+<td>https://www.sculpteo.com/en/</td>
+<td>File: parts/rear_panel.svg</td>
+</tr>
+
+<tr>
+<td>Nixie Display Board</td>
+<td>1</td>
+<td>https://oshpark.com/</td>
+<td>File: display_pcb/nixie_display_board.kicad_pcb</td>
+</tr>
+
+<tr>
+<td>Logic Board</td>
+<td>1</td>
+<td>https://oshpark.com/</td>
+<td>File: logic_pcb/rad_dice_logic_board.kicad_pcb</td>
+</tr>
+
+<tr>
+<td>Control Panel Board</td>
+<td>1</td>
+<td>https://oshpark.com/</td>
+<td>File: front_panel_pcb/panel_board.kicad_pcb</td>
+</tr>
+
+<tr>
+<td>Panel Mount USB Cable</td>
+<td>1</td>
+<td>https://www.amazon.com/gp/product/B00S6GY0VU</td>
+<td></td>
+</tr>
+
+<tr>
+<td>Female-Female Dupont Wire (10 cm)</td>
+<td>Lots</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Female-Female Dupont Wire (20 cm)</td>
+<td>Some</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>Brass Hex Standoffs</td>
+<td>Lots</td>
+<td></td>
+<td></td>
+</tr>
+
+<tr>
+<td>M3 Screws</td>
+<td>Lots</td>
+<td></td>
+<td></td>
+</tr>
+
+
+</table>
