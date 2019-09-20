@@ -1,6 +1,6 @@
 # Parts List
 
-<table width="50%">
+<table style="width:50%">
 
 <tr>
 <td>Item</td>
