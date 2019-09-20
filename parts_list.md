@@ -119,7 +119,7 @@
 <td>4</td>
 <td>https://www.amazon.com/gp/product/B07D9HCNDX</td>
 <td></td>
-<td></tr>
+</tr>
 
 <tr>
 <td>Pushbutton</td>
