@@ -20,7 +20,7 @@ U 1 1 5D1FBE82
 P 3950 5750
 F 0 "J6" H 3700 5800 50  0000 R CNN
 F 1 "GROUND" H 3700 5900 50  0000 R CNN
-F 2 "Pin_Headers:Pin_Header_Angled_2x03_Pitch2.54mm" H 4000 5750 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Angled_1x03_Pitch2.54mm" H 4000 5750 50  0001 C CNN
 F 3 "" H 4000 5750 50  0001 C CNN
 	1    3950 5750
 	-1   0    0    1   
@@ -148,7 +148,7 @@ U 1 1 5D1FDF4F
 P 3900 1800
 F 0 "J5" H 4150 1950 50  0000 L CNN
 F 1 "POWER-5V" H 4150 1850 50  0000 L CNN
-F 2 "Pin_Headers:Pin_Header_Angled_2x03_Pitch2.54mm" H 3950 1800 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Angled_1x03_Pitch2.54mm" H 3950 1800 50  0001 C CNN
 F 3 "" H 3950 1800 50  0001 C CNN
 	1    3900 1800
 	1    0    0    -1  
@@ -196,7 +196,7 @@ U 1 1 5D744507
 P 4800 3250
 F 0 "J4" H 4978 3346 50  0000 L CNN
 F 1 "FRONT-PANEL" H 4978 3255 50  0000 L CNN
-F 2 "" H 4800 3250 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Angled_1x02_Pitch2.54mm" H 4800 3250 50  0001 C CNN
 F 3 "" H 4800 3250 50  0001 C CNN
 	1    4800 3250
 	1    0    0    -1  
@@ -214,7 +214,25 @@ Wire Wire Line
 Wire Wire Line
 	4300 3250 4500 3250
 Wire Wire Line
-	3650 2000 4200 2000
+	3650 2000 3800 2000
 Wire Wire Line
-	3550 5550 4250 5550
+	3800 2000 3900 2000
+Connection ~ 3800 2000
+Wire Wire Line
+	4000 2000 4200 2000
+Wire Wire Line
+	4000 2000 3900 2000
+Connection ~ 4000 2000
+Connection ~ 3900 2000
+Wire Wire Line
+	3550 5550 3850 5550
+Wire Wire Line
+	3850 5550 3950 5550
+Connection ~ 3850 5550
+Wire Wire Line
+	4050 5550 3950 5550
+Connection ~ 3950 5550
+Wire Wire Line
+	4050 5550 4250 5550
+Connection ~ 4050 5550
 $EndSCHEMATC

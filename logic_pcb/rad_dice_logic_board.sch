@@ -20,7 +20,7 @@ U 1 1 5D1FBE82
 P 3950 5750
 F 0 "J6" H 3700 5800 50  0000 R CNN
 F 1 "GROUND" H 3700 5900 50  0000 R CNN
-F 2 "Pin_Headers:Pin_Header_Angled_1x03_Pitch2.54mm" H 4000 5750 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Angled_1x06_Pitch2.54mm" H 4000 5750 50  0001 C CNN
 F 3 "" H 4000 5750 50  0001 C CNN
 	1    3950 5750
 	-1   0    0    1   
@@ -142,17 +142,6 @@ Wire Wire Line
 Wire Wire Line
 	4400 3600 4400 4650
 Connection ~ 1650 4600
-$Comp
-L rad_dice_logic_board:POWER-5V J5
-U 1 1 5D1FDF4F
-P 3900 1800
-F 0 "J5" H 4150 1950 50  0000 L CNN
-F 1 "POWER-5V" H 4150 1850 50  0000 L CNN
-F 2 "Pin_Headers:Pin_Header_Angled_1x03_Pitch2.54mm" H 3950 1800 50  0001 C CNN
-F 3 "" H 3950 1800 50  0001 C CNN
-	1    3900 1800
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4250 4200 4250 5550
 Wire Wire Line
@@ -213,8 +202,74 @@ Wire Wire Line
 	4300 3800 4300 3250
 Wire Wire Line
 	4300 3250 4500 3250
+$Comp
+L rad_dice_logic_board:POWER-5V J5
+U 1 1 5D1FDF4F
+P 3800 1800
+F 0 "J5" H 4050 1950 50  0000 L CNN
+F 1 "POWER-5V" H 4050 1850 50  0000 L CNN
+F 2 "Pin_Headers:Pin_Header_Angled_1x06_Pitch2.54mm" H 3850 1800 50  0001 C CNN
+F 3 "" H 3850 1800 50  0001 C CNN
+	1    3800 1800
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	3650 2000 4200 2000
+	3650 2000 3700 2000
 Wire Wire Line
-	3550 5550 4250 5550
+	3700 2000 3800 2000
+Connection ~ 3700 2000
+Connection ~ 4200 2000
+Connection ~ 3800 2000
+Wire Wire Line
+	3800 2000 3900 2000
+Connection ~ 3900 2000
+Wire Wire Line
+	3900 2000 4000 2000
+Connection ~ 4000 2000
+Wire Wire Line
+	4000 2000 4100 2000
+Connection ~ 4100 2000
+Wire Wire Line
+	4100 2000 4200 2000
+Wire Wire Line
+	4250 5550 4050 5550
+Connection ~ 3550 5550
+Connection ~ 3650 5550
+Wire Wire Line
+	3650 5550 3550 5550
+Connection ~ 3750 5550
+Wire Wire Line
+	3750 5550 3650 5550
+Connection ~ 3850 5550
+Wire Wire Line
+	3850 5550 3750 5550
+Connection ~ 3950 5550
+Wire Wire Line
+	3950 5550 3850 5550
+Connection ~ 4050 5550
+Wire Wire Line
+	4050 5550 3950 5550
+$Comp
+L rad_dice_logic_board:GPIO J7
+U 1 1 5D877BB1
+P 4700 5050
+F 0 "J7" V 4654 5328 50  0000 L CNN
+F 1 "GPIO" V 4745 5328 50  0000 L CNN
+F 2 "Pin_Headers:Pin_Header_Angled_1x02_Pitch2.54mm" H 4700 5050 50  0001 C CNN
+F 3 "" H 4700 5050 50  0001 C CNN
+	1    4700 5050
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2950 4200 2850 4200
+Wire Wire Line
+	2850 4200 2850 5000
+Wire Wire Line
+	2850 5000 4500 5000
+Wire Wire Line
+	3950 3900 4150 3900
+Wire Wire Line
+	4150 3900 4150 5100
+Wire Wire Line
+	4150 5100 4500 5100
 $EndSCHEMATC
