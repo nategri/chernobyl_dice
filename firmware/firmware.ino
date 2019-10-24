@@ -12,6 +12,7 @@
 
 #include "nixies.h"
 #include "controlpanel.h"
+#include "speaker.h"
 
 RTC_DS3231 rtc;
 
@@ -23,13 +24,24 @@ volatile uint8_t ringBuff[256];
 
 volatile uint8_t ringBuffWriteHead;
 
+// Global variables for state machine
 uint8_t turboMode;
+uint8_t speakerOn;
+uint8_t trigLedsOn;
 
+// Interfaces to various hardware components
 Nixies* nixies;
 ControlPanel* controlPanel;
+Speaker* speaker;
 
 void geigerEvent() {
-  digitalWrite(UV_LED_PIN, HIGH);
+  if(trigLedOn) {
+    digitalWrite(UV_LED_PIN, HIGH);
+  }
+
+  if(speakerOn) {
+    speaker->beginClick();
+  }
 
   didTrigger = 1;
   prevTrigTime = millis();
@@ -38,10 +50,19 @@ void geigerEvent() {
 
 ISR(TIMER0_COMPA_vect) {
   // Turn off UV LEDs if it's been more than 50 ms since last trigger
+  // Also a finish a "click" on the piezo speaker if it's been 1 ms or more
   unsigned long now = millis();
 
-  if((now - prevTrigTime) > 50) {
+  dt = now - prevTrigTime
+
+  if(dt > 50) {
     digitalWrite(UV_LED_PIN, LOW);
+  }
+
+  if(dt >= 1) {
+    if(speakerOn) {
+      speaker->endClick();
+    }
   }
 
   // Handle this 1 ms window
@@ -56,7 +77,6 @@ ISR(TIMER0_COMPA_vect) {
   ringBuffWriteHead++;
 }
 
-// SIMPLE METHOD
 uint8_t getRandByte(unsigned char callingPosition) {
   
   uint8_t randByte = 0;
@@ -140,6 +160,7 @@ void setup() {
   // put your setup code here, to run once:
   nixies = new Nixies();
   controlPanel = new ControlPanel();
+  speaker = new Speaker();
 
   ringBuffWriteHead = 0;
   prevTrigTime = 0;
@@ -223,6 +244,9 @@ void loop() {
   }
   else if (rotPos2 == LOW) {
     // STREAMING MODE
+    trigLedsOn = 1;
+    speakerOn = !turboMode;
+
     nixies->clear();
 
     uint16_t delayTime;
@@ -289,6 +313,9 @@ void loop() {
     }
   }
   else if(rotPos3 == LOW) {
+    // DICE MODE
+    trigLedsOn = 0;
+    speakerOn = 0;
     nixies->clear();
     
     uint8_t toggleNum = readToggles();
@@ -308,8 +335,12 @@ void loop() {
 
       uint8_t randByte;
       while(1) {
+        trigLedsOn = 1;
+        speakerOn = 1;
         randByte = getRandByte(ROTARYPOSITION3);
         if(randByte < (256 - (256 % toggleNum))) {
+          trigLedsOn = 0;
+          speakerOn = 0;
           break;
         }
       }

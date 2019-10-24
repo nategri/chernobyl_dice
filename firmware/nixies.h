@@ -4,14 +4,14 @@
 #define ZERO_PAD 1
 #define NO_ZERO_PAD 0
 
-#define NIX1 0
-#define NIX2 1
-#define NIX3 3
-#define NIX4 4
-#define NIX5 5
-#define NIX6 6
-#define NIX7 7
-#define NIX8 8
+#define NIX1 3
+#define NIX2 4
+#define NIX3 5
+#define NIX4 6
+#define NIX5 7
+#define NIX6 8
+#define NIX7 9
+#define NIX8 10
 
 #include "exixe.h"
 
