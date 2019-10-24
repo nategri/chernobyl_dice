@@ -35,12 +35,12 @@ ControlPanel* controlPanel;
 Speaker* speaker;
 
 void geigerEvent() {
-  if(trigLedOn) {
+  if(trigLedsOn) {
     digitalWrite(UV_LED_PIN, HIGH);
   }
 
   if(speakerOn) {
-    speaker->beginClick();
+    speaker->clickBegin();
   }
 
   didTrigger = 1;
@@ -53,7 +53,7 @@ ISR(TIMER0_COMPA_vect) {
   // Also a finish a "click" on the piezo speaker if it's been 1 ms or more
   unsigned long now = millis();
 
-  dt = now - prevTrigTime
+  unsigned long dt = now - prevTrigTime;
 
   if(dt > 50) {
     digitalWrite(UV_LED_PIN, LOW);
@@ -61,7 +61,7 @@ ISR(TIMER0_COMPA_vect) {
 
   if(dt >= 1) {
     if(speakerOn) {
-      speaker->endClick();
+      speaker->clickEnd();
     }
   }
 
