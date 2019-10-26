@@ -23,8 +23,8 @@ static char* Nixies::number_to_digits(unsigned long num, const unsigned char zer
 }
 
 Nixies::Nixies() {
-  this->_nixie[0] = new exixe(NIX7);
-  this->_nixie[1] = new exixe(NIX8);
+  this->_nixie[0] = new exixe(NIX8);
+  this->_nixie[1] = new exixe(NIX7);
   this->_nixie[2] = new exixe(NIX6);
   this->_nixie[3] = new exixe(NIX5);
   this->_nixie[4] = new exixe(NIX4);

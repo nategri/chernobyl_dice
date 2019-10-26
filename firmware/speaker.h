@@ -3,8 +3,8 @@
 
 #include <Arduino.h>
 
-#define SPEAKER_PIN_A 12
-#define SPEAKER_PIN_B 17
+#define SPEAKER_PIN_A 17
+#define SPEAKER_PIN_B 12
 
 class Speaker {
   public:

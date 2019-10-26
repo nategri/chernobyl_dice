@@ -21,8 +21,7 @@ exixe::exixe(int my_cs)
 void exixe::spi_init()
 {
   SPI.begin();
-  //SPI.beginTransaction(SPISettings(8000000, MSBFIRST, SPI_MODE0));
-  SPI.beginTransaction(SPISettings(800000, MSBFIRST, SPI_MODE0));
+  SPI.beginTransaction(SPISettings(8000000, MSBFIRST, SPI_MODE0));
 }
 
 void exixe::spi_write()

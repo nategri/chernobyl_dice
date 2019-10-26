@@ -154,6 +154,7 @@ uint16_t readToggles() {
 }
 
 void setup() {
+
   // Init real time clock
   rtc.begin();
   

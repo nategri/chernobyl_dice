@@ -5,7 +5,7 @@ Speaker::Speaker() {
   pinMode(SPEAKER_PIN_B, OUTPUT);
 
   digitalWrite(SPEAKER_PIN_A, LOW);
-  digitalWrite(SPEAKER_PIN_B, HIGH);
+  digitalWrite(SPEAKER_PIN_B, LOW);
 }
 
 void Speaker::clickBegin() {
