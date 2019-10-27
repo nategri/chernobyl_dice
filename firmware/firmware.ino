@@ -315,7 +315,7 @@ void loop() {
     }
 
     if(controlPanel->switch_state(ROTARYPOSITION2) == LOW) {
-      Serial.begin(300);
+      Serial.begin(19200);
       if(toggleNum == 256) {
         Serial.write(randByte);
       }
