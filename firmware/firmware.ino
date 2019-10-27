@@ -29,6 +29,9 @@ uint8_t turboMode;
 uint8_t speakerOn;
 uint8_t trigLedsOn;
 
+uint16_t toggleNum;
+uint8_t prevToggleNum; // Assists in clock's time-setting logic
+
 // Interfaces to various hardware components
 Nixies* nixies;
 ControlPanel* controlPanel;
@@ -135,8 +138,9 @@ uint8_t getRandByte(unsigned char callingPosition) {
   return randByte;
 }
 
-uint16_t readToggles() {
-    uint16_t toggleNum = 0;
+// Read off what number is indicated in the toggles
+uint8_t readToggles() {
+    uint8_t toggleNum = 0;
     if(controlPanel->switch_state(TOGGLE1) == LOW) {
       toggleNum += 16;
     }
@@ -187,6 +191,9 @@ void setup() {
   // Attach geiger counter interrupt
   pinMode(2, INPUT_PULLUP);
   attachInterrupt(0, geigerEvent, FALLING);
+
+  // Initialize prevToggle num to max value so it doesn't trip clock-setting logic
+  prevToggleNum = 30;
 }
 
 void loop() {
@@ -194,6 +201,7 @@ void loop() {
   unsigned int rotPos1 = controlPanel->switch_state(ROTARYPOSITION1);
   unsigned int rotPos2 = controlPanel->switch_state(ROTARYPOSITION2);
   unsigned int rotPos3 = controlPanel->switch_state(ROTARYPOSITION3);
+  toggleNum = readToggles();
 
   if((!rotPos2 || !rotPos3) && (trigCount < 20)) {
     // Wait to burn in some events
@@ -208,6 +216,40 @@ void loop() {
   if (rotPos1 == LOW) {
     // CLOCK MODE
     DateTime now = rtc.now();
+
+    if(toggleNum > prevToggleNum) {
+      uint8_t hour = now.hour();
+      uint8_t minute = now.minute();
+      uint8_t second = now.second();
+
+      uint8_t toggleFlipped = toggleNum ^ prevToggleNum;
+
+      switch(toggleFlipped) {
+        case 16:
+          // Increment hour
+          hour = (hour + 1) % 24;
+          break;
+        case 8:
+          // Increment 10 minutes
+          minute = (minute + 10) % 60;
+          break;
+        case 4:
+          // Increment 1 minute
+          minute = (minute + 1) % 60;
+          break;
+        case 2:
+          // Set seconds to zero
+          second = 0;
+          break;
+      }
+
+      // Not using this clock to keep track of days so just always make it 1/1/2000
+      DateTime newDateTime = DateTime(2000, 1, 1, hour, minute, second);
+
+      // Set the clock
+      rtc.adjust(newDateTime);
+    }
+
     unsigned long int hour_number = 1000000UL * (unsigned long int) now.hour();
     unsigned long int minute_number = 1000UL * (unsigned long int) now.minute();
     unsigned long int second_number = (unsigned long int) now.second();
@@ -242,6 +284,7 @@ void loop() {
         }
       }
     }
+    prevToggleNum = toggleNum;
   }
   else if (rotPos2 == LOW) {
     // STREAMING MODE
@@ -258,7 +301,6 @@ void loop() {
       delayTime = 1000;
     }
 
-    uint16_t toggleNum = readToggles();
     if(toggleNum == 0) {
       toggleNum = 256;
     }
@@ -318,8 +360,6 @@ void loop() {
     trigLedsOn = 0;
     speakerOn = 0;
     nixies->clear();
-    
-    uint8_t toggleNum = readToggles();
 
     if(toggleNum != 0) {
       char* displayDigits = Nixies::number_to_digits(toggleNum, NO_ZERO_PAD);
