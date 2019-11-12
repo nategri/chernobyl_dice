@@ -51,10 +51,14 @@ blinking digits.
 
 #### Overview and Parts List
 
+*WARNING: These instructions and resources are not polished and are somewhat untested. This is a project for advanced makers, and
+you should fully expect to have a bit of an adventure while building your own Chernobyl Dice! That said: Shoot me a message if
+you run into trouble, and I'll try to help you out and improve the instructions as well.*
+
 #### Wiring Diagram
 
 <p align="center"><img src="/images/chernobyl_dice_wiring_schematic.jpg"></p>
-<p align="center"><i>How connect the internal wiring of the Chernobyl Dice.</i>.</p>
+<p align="center"><i>How connect the internal wiring of the Chernobyl Dice.</i></p>
 
 #### Build Photos
 
