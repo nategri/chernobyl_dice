@@ -1,3 +1,5 @@
+# Chernobyl Dice
+
 <p align="center"><img src="/images/chernobyl_dice.jpg"></p>
 
 ## Introduction
