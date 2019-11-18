@@ -4,6 +4,9 @@
 // Increment this if it starts acting funny (WOW YOU'VE TOGGLED IT A LOT HUH)
 #define EEPROM_ADDR 11
 
+// Pattern used to de-bias bits
+#define DEBIAS_PATTERN 0b10101010
+
 #include <EEPROM.h>
 
 #include "RTClib.h"
@@ -94,6 +97,9 @@ uint8_t getRandByte(unsigned char callingPosition) {
   while(currBit < 8) {
 
     uint8_t bitContribution = 0b00000001 << currBit;
+
+    // Debias
+    bitContribution = bitContribution ^ (DEBIAS_PATTERN & bitContribution);
     
     while(1) {
       if(controlPanel->switch_state(callingPosition) != LOW) {
@@ -116,6 +122,7 @@ uint8_t getRandByte(unsigned char callingPosition) {
           break;
         }
         else if((ringBuff[idx] == 0) && (ringBuff[idx+1] == 1)) {
+          randByte += bitContribution;
           currBit++;
           break;
         }
