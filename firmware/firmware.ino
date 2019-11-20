@@ -98,8 +98,7 @@ uint8_t getRandByte(unsigned char callingPosition) {
 
     uint8_t bitContribution = 0b00000001 << currBit;
 
-    // Debias
-    bitContribution = bitContribution ^ (DEBIAS_PATTERN & bitContribution);
+    uint8_t bitDebias = DEBIAS_PATTERN & bitContribution;
     
     while(1) {
       if(controlPanel->switch_state(callingPosition) != LOW) {
@@ -116,16 +115,17 @@ uint8_t getRandByte(unsigned char callingPosition) {
         if(ringBuff[idx] == ringBuff[idx+1]) {
           continue;
         }
-        else if((ringBuff[idx] == 1) && (ringBuff[idx+1] == 0)) {
-          randByte += bitContribution;
-          currBit++;
-          break;
-        }
         else if((ringBuff[idx] == 0) && (ringBuff[idx+1] == 1)) {
-          randByte += bitContribution;
-          currBit++;
-          break;
+          bitContribution = 0b00000000;
         }
+
+        currBit++;
+
+        // Debias
+        bitContribution = bitContribution ^ bitDebias;
+
+        randByte += bitContribution;
+        break;
       }
       
     }
