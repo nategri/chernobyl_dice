@@ -93,9 +93,9 @@ Here's a rough outline of the steps required for assembly:
 12. Mount the front panel to the enclosure, taking care to insure that the hole in the rotary switch lock plate lines up with the
     upper-left standoff on the front of the radioactive sample holder
 
-*Standoff Size Guide*
+**Standoff Size Guide**
 | Location | Standoff Length | Type |
-|---|---|---|
+| --- | --- | --- |
 | Rear of enclosure | 10 mm | Female-Female |
 | Front of enclosure | 10 mm | Female-Female |
 | Nixie Display Board mount | 10 mm | Female-Male |
@@ -112,7 +112,7 @@ Here's a rough outline of the steps required for assembly:
 
 ## Build Photos
 
-*Enclosure with Standoffs Inserted*
+**Enclosure with Standoffs Inserted**
 <p align="center"><img src="/images/build/small/1.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/1.JPG">Click here</a>
