@@ -18,9 +18,6 @@ Geiger counter events ("clicks") are converted into random bits by taking the mo
 miliseconds that have passed since the device was switched on (e.g. the device outputs a "0" if the
 Geiger tube triggers on an even milisecond, and output a "1" if it triggers on an odd milisecond).
 
-1. In a ring buffer, record either a 0 or a 1, depending on whether or not a Geiger event occurred
-2. Debias this 0-dominated stream into an ubiased stream using von Neumann's method [0]
-
 The uranium glass sample is illuminated by an array of ultraviolet LEDs at each Geiger event, which makes them
 fluoresce bright green. This has nothing to do with the radioactivity of the sample, but it does, however, *look
 really cool*.
@@ -72,18 +69,6 @@ Here's a rough outline of the steps required for assembly:
       * If the tops some holes came out of the printer a bit distorted then they can be widened easily by twisting a largish
         Phillips head scewdriver in them until the top of the hole is wide enough.
 
-| Location | Standoff Length | Type |
-|---|---|---|
-| Rear of enclosure | 10 mm | Female-Female |
-| Front of enclosure | 10 mm | Female-Female |
-| Nixie Display Board mount | 10 mm | Female-Male |
-| Logic Board mount | 10 mm | Female-Male |
-| Logic Board-to-Geiger Board | 10 mm | Female-Male |
-| Geiger Board-to-Bottom of Uranium Sample Box | 10 mm | Female-Male |
-| Bottom of Uranium Sample Box-to-Top of Uranium Sample Box | 10 mm | Female-Male |
-| Top of Uranium Sample Box-to-Front Panel | 10 mm | Female-Female |
-
-
 4. Assemble custom PCBs and 'exixe' nixie tube driver boards using build photos as a guide
     * TIPS
       * The female headers on the Nixie Display Board for the nixie tube driver PCBs can be assembled using only four long female
@@ -98,7 +83,7 @@ Here's a rough outline of the steps required for assembly:
 5. Attach the acrylic back panel and panel mount USB cable to the rear of the enclosure
 6. Mount custom PCBs inside enclosure and perform wiring (see wiring schematic and build photos)
 7. Partially dis-assemble rotary switch to attach it to the "lock plate" (lock_plate.stl)
-8, Mount toggle-and-PCB assembly, LED-with-holder assemblies, rotary-switch-and-lock-plate assembly, and pushbutton on front panel
+8. Mount toggle-and-PCB assembly, LED-with-holder assemblies, rotary-switch-and-lock-plate assembly, and pushbutton on front panel
     * TIP
       * While attaching the LED to the holder, apply a drop of cyanocrylate (SuperGlue) to prevent the LED from falling out of the
         front of the holder
@@ -108,6 +93,18 @@ Here's a rough outline of the steps required for assembly:
 12. Mount the front panel to the enclosure, taking care to insure that the hole in the rotary switch lock plate lines up with the
     upper-left standoff on the front of the radioactive sample holder
 
+*Standoff Size Guide*
+| Location | Standoff Length | Type |
+|---|---|---|
+| Rear of enclosure | 10 mm | Female-Female |
+| Front of enclosure | 10 mm | Female-Female |
+| Nixie Display Board mount | 10 mm | Female-Male |
+| Logic Board mount | 10 mm | Female-Male |
+| Logic Board-to-Geiger Board | 10 mm | Female-Male |
+| Geiger Board-to-Bottom of Uranium Sample Box | 10 mm | Female-Male |
+| Bottom of Uranium Sample Box-to-Top of Uranium Sample Box | 10 mm | Female-Male |
+| Top of Uranium Sample Box-to-Front Panel | 10 mm | Female-Female |
+
 ## Wiring Diagram
 
 <p align="center"><img src="/images/chernobyl_dice_wiring_schematic.jpg"></p>
@@ -115,6 +112,7 @@ Here's a rough outline of the steps required for assembly:
 
 ## Build Photos
 
+*Enclosure with Standoffs Inserted*
 <p align="center"><img src="/images/build/small/1.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/1.JPG">Click here</a>
