@@ -94,6 +94,7 @@ Here's a rough outline of the steps required for assembly:
     upper-left standoff on the front of the radioactive sample holder
 
 **Standoff Size Guide**
+
 | Location | Standoff Length | Type |
 | --- | --- | --- |
 | Rear of enclosure | 10 mm | Female-Female |
