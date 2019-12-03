@@ -103,7 +103,7 @@ Here's a rough outline of the steps required for assembly:
     * TIP
       * While attaching the LED to the holder, apply a drop of cyanocrylate (SuperGlue) to prevent the LED from falling out of the
         front of the holder
-10, Perform wiring of the control panel (see wiring schematic and build photos)
+10. Perform wiring of the control panel (see wiring schematic and build photos)
 11. Fit the eight nixie display driver boards into the female headers of the Nixie Display Board
 12. Wire the Control Panel to the Logic Board
 13. Mount the front panel to the enclosure, taking care to insure that the hole in the rotary switch lock plate lines up with the
