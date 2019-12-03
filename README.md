@@ -6,7 +6,7 @@
 
 #### Description
 
-The Chernobyl Dice is a true random number generator that uses nuclear decays from a weakly radioactive sample
+The Chernobyl Dice is a quantum random number generator that uses nuclear decays from a weakly radioactive sample
 as a source of entropy. It consists of four primary components:
 
 * An Arduino Nano microcontroller
@@ -15,8 +15,8 @@ as a source of entropy. It consists of four primary components:
 * Nixie tube display
 
 Geiger counter events ("clicks") are converted into random bits by taking the mod2 of the total number of
-microseconds that have passed since the device was switched on (e.g. the device outputs a "0" if the
-Geiger tube triggers on an even milisecond, and output a "1" if it triggers on an odd microsecond). [0]
+4 microsecond "ticks" that have passed since the device was switched on (e.g. the device outputs a "0" if the
+Geiger tube triggers on an even tick, and output a "1" if it triggers on an odd microsecond). [0]
 
 The uranium glass sample is illuminated by an array of ultraviolet LEDs at each Geiger event, which makes them
 fluoresce bright green. This has nothing to do with the radioactivity of the sample, but it does, however, *look
@@ -53,9 +53,9 @@ A Fusion 360 CAD drawing of the device can be viewed and downloaded at this URL:
 https://a360.co/2OeFT1n
 
 Thanks to the following GrabCAD users for their models:
-* (Alex)[https://grabcad.com/alex-160] (Nixie tube)
-* (Mike Smith)[https://grabcad.com/mike.smith-208] (Arduino Nano)
-* (Dragos Ionescu)[https://grabcad.com/dragos.ionescu-2] (Various pin headers)
+* [Alex](https://grabcad.com/alex-160) (Nixie tube)
+* [Mike Smith](https://grabcad.com/mike.smith-208) (Arduino Nano)
+* [Dragos Ionescu](https://grabcad.com/dragos.ionescu-2) (Various pin headers)
 
 ## Overview and Parts List
 
@@ -139,72 +139,81 @@ the desired distance.
 for larger photo.
 </i></p>
 
-<br><br>
+<br><br><br>
 
+**Logic Board Mounted**
 <p align="center"><img src="/images/build/small/2.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/2.JPG">Click here</a>
 for larger photo.
 </i></p>
 
-<br><br>
+<br><br><br>
 
+**Nixie Display Board Wiring**
 <p align="center"><img src="/images/build/small/3.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/3.JPG">Click here</a>
 for larger photo.
 </i></p>
 
-<br><br>
+<br><br><br>
 
+**Nixie Display Board Mounted and Logic Board Wiring**
 <p align="center"><img src="/images/build/small/4.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/4.JPG">Click here</a>
 for larger photo.
 </i></p>
 
-<br><br>
+<br><br><br>
 
+**Geiger Board Mounted**
 <p align="center"><img src="/images/build/small/5.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/5.JPG">Click here</a>
 for larger photo.
 </i></p>
 
-<br><br>
+<br><br><br>
 
+*Uranium Sample Holder Lower Half Detail*
 <p align="center"><img src="/images/build/small/6.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/6.JPG">Click here</a>
 for larger photo.
 </i></p>
 
-<br><br>
+<br><br><br>
 
+*Uranium Sample Holder Lower Half Mounted*
 <p align="center"><img src="/images/build/small/7.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/7.JPG">Click here</a>
 for larger photo.
 </i></p>
 
-<br><br>
+<br><br><br>
 
+*Uranium Sample Holder Top Half Mounted*
 <p align="center"><img src="/images/build/small/8.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/8.JPG">Click here</a>
 for larger photo.
 </i></p>
 
-<br><br>
+<br><br><br>
 
+*Control Panel Board Wired*
 <p align="center"><img src="/images/build/small/9.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/9.JPG">Click here</a>
 for larger photo.
 </i></p>
 
-<br><br>
+<br><br><br>
 
+*Control Panel Board Wiring Detail*
 <p align="center"><img src="/images/build/small/10.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/10.JPG">Click here</a>
