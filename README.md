@@ -15,8 +15,8 @@ as a source of entropy. It consists of four primary components:
 * Nixie tube display
 
 Geiger counter events ("clicks") are converted into random bits by taking the mod2 of the total number of
-miliseconds that have passed since the device was switched on (e.g. the device outputs a "0" if the
-Geiger tube triggers on an even milisecond, and output a "1" if it triggers on an odd milisecond).
+microseconds that have passed since the device was switched on (e.g. the device outputs a "0" if the
+Geiger tube triggers on an even milisecond, and output a "1" if it triggers on an odd microsecond). [0]
 
 The uranium glass sample is illuminated by an array of ultraviolet LEDs at each Geiger event, which makes them
 fluoresce bright green. This has nothing to do with the radioactivity of the sample, but it does, however, *look
@@ -45,6 +45,17 @@ In dice mode random number generation is initiated via the pushbotton, and the s
 by the sum of the toggled switches (no switches are set the device will generate random byte in the range 0-255). Press
 once to generate the number, and once again to clear the display. The size of the number to be generated is displayed in
 blinking digits.
+
+## CAD Drawing
+
+A Fusion 360 CAD drawing of the device can be viewed and downloaded at this URL:
+
+https://a360.co/2OeFT1n
+
+Thanks to the following GrabCAD users for their models:
+* (Alex)[https://grabcad.com/alex-160] (Nixie tube)
+* (Mike Smith)[https://grabcad.com/mike.smith-208] (Arduino Nano)
+* (Dragos Ionescu)[https://grabcad.com/dragos.ionescu-2] (Various pin headers)
 
 ## Overview and Parts List
 
@@ -83,14 +94,19 @@ Here's a rough outline of the steps required for assembly:
 5. Attach the acrylic back panel and panel mount USB cable to the rear of the enclosure
 6. Mount custom PCBs inside enclosure and perform wiring (see wiring schematic and build photos)
 7. Partially dis-assemble rotary switch to attach it to the "lock plate" (lock_plate.stl)
-8. Mount toggle-and-PCB assembly, LED-with-holder assemblies, rotary-switch-and-lock-plate assembly, and pushbutton on front panel
+8. Perform any necessary finishing to the stainless steel front panel
+    * TIPS
+      * Some mounting holes for toggles and switches may need to be widened (use a round file for this)
+      * Surface finish of a lasercut part can be improved by sanding *with the grain* using ~300 grit sandpaper (test on the back
+        side first)
+9. Mount toggle-and-PCB assembly, LED-with-holder assemblies, rotary-switch-and-lock-plate assembly, and pushbutton on front panel
     * TIP
       * While attaching the LED to the holder, apply a drop of cyanocrylate (SuperGlue) to prevent the LED from falling out of the
         front of the holder
-9, Perform wiring of the control panel (see wiring schematic and build photos)
-10. Fit the eight nixie display driver boards into the female headers of the Nixie Display Board
-11. Wire the Control Panel to the Logic Board
-12. Mount the front panel to the enclosure, taking care to insure that the hole in the rotary switch lock plate lines up with the
+10, Perform wiring of the control panel (see wiring schematic and build photos)
+11. Fit the eight nixie display driver boards into the female headers of the Nixie Display Board
+12. Wire the Control Panel to the Logic Board
+13. Mount the front panel to the enclosure, taking care to insure that the hole in the rotary switch lock plate lines up with the
     upper-left standoff on the front of the radioactive sample holder
 
 **Standoff Size Guide**
@@ -99,12 +115,15 @@ Here's a rough outline of the steps required for assembly:
 | --- | --- | --- |
 | Rear of enclosure | 10 mm | Female-Female |
 | Front of enclosure | 10 mm | Female-Female |
-| Nixie Display Board mount | 10 mm | Female-Male |
-| Logic Board mount | 10 mm | Female-Male |
-| Logic Board-to-Geiger Board | 10 mm | Female-Male |
-| Geiger Board-to-Bottom of Uranium Sample Box | 10 mm | Female-Male |
-| Bottom of Uranium Sample Box-to-Top of Uranium Sample Box | 10 mm | Female-Male |
-| Top of Uranium Sample Box-to-Front Panel | 10 mm | Female-Female |
+| Nixie Display Board mount | 40 mm | Female-Female |
+| Logic Board mount | 20 mm | Female-Female|
+| Logic Board-to-Geiger Board | 30 mm | Male-Female |
+| Geiger Board-to-Bottom of Uranium Sample Box | 15 mm | Male-Female |
+| Bottom of Uranium Sample Box-to-Top of Uranium Sample Box | 6 mm | Male-Female |
+| Top of Uranium Sample Box-to-Front Panel | 6 mm | Male-Female |
+
+NOTE: For large internal standoff distances (e.g. the Nixie Display mount) two standoffs can be stacked to achieve
+the desired distance.
 
 ## Wiring Diagram
 
@@ -120,11 +139,15 @@ Here's a rough outline of the steps required for assembly:
 for larger photo.
 </i></p>
 
+<br><br>
+
 <p align="center"><img src="/images/build/small/2.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/2.JPG">Click here</a>
 for larger photo.
 </i></p>
+
+<br><br>
 
 <p align="center"><img src="/images/build/small/3.JPG"></p>
 <p align="center"><i>
@@ -132,11 +155,15 @@ for larger photo.
 for larger photo.
 </i></p>
 
+<br><br>
+
 <p align="center"><img src="/images/build/small/4.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/4.JPG">Click here</a>
 for larger photo.
 </i></p>
+
+<br><br>
 
 <p align="center"><img src="/images/build/small/5.JPG"></p>
 <p align="center"><i>
@@ -144,11 +171,15 @@ for larger photo.
 for larger photo.
 </i></p>
 
+<br><br>
+
 <p align="center"><img src="/images/build/small/6.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/6.JPG">Click here</a>
 for larger photo.
 </i></p>
+
+<br><br>
 
 <p align="center"><img src="/images/build/small/7.JPG"></p>
 <p align="center"><i>
@@ -156,11 +187,15 @@ for larger photo.
 for larger photo.
 </i></p>
 
+<br><br>
+
 <p align="center"><img src="/images/build/small/8.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/8.JPG">Click here</a>
 for larger photo.
 </i></p>
+
+<br><br>
 
 <p align="center"><img src="/images/build/small/9.JPG"></p>
 <p align="center"><i>
@@ -168,12 +203,19 @@ for larger photo.
 for larger photo.
 </i></p>
 
+<br><br>
+
 <p align="center"><img src="/images/build/small/10.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/10.JPG">Click here</a>
 for larger photo.
 </i></p>
 
+## Acknowledgements
+
+Many thanks to Emily Velasco (@MLE_Online) for advice on stainless surface sanding, and for generally being enthusiastic
+as heck about this project.
+
 ## References
 
-[0] https://en.wikipedia.org/wiki/Hardware_random_number_generator#Dealing_with_bias
+[0] "Quantum Random Number Generators." M. Herrero-Collantes and J. C. Garcia-Escartin. https://arxiv.org/abs/1604.03304

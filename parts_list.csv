@@ -20,11 +20,14 @@ Red LED (3 mm),4,,
 Stainless Steel Front Panel,1,https://www.oshcut.com/,File: parts/front_panel.dxf
 Enclosure,1,,"Files: parts/enclosure_[big, small]_half.stl"
 Rotary Switch Lock Plate,1,,File: parts/lock_plate.stl
-Acrylic Rear Panel,1,https://www.sculpteo.com/en/,File: parts/rear_panel.svg
+Acrylic Rear Panel,1,https://www.ponoko.com/,File: parts/rear_panel.svg
 Nixie Display Board,1,https://oshpark.com/,File: display_pcb/nixie_display_board.kicad_pcb
 Logic Board,1,https://oshpark.com/,File: logic_pcb/rad_dice_logic_board.kicad_pcb
 Control Panel Board,1,https://oshpark.com/,File: front_panel_pcb/panel_board.kicad_pcb
 Panel Mount USB Cable,1,https://www.amazon.com/gp/product/B00S6GY0VU
+Piezo Speaker,1,https://www.amazon.com/gp/product/B074CFZ5Z9
+Female Pin Headers,Lots,,
+Male Pin Headers,Lots,,
 Female-Female Dupont Wire (10 cm),Lots,,
 Female-Female Dupont Wire (20 cm),Some,,
 Brass Hex Standoffs,Lots,,
