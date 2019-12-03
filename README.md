@@ -135,6 +135,8 @@ the desired distance.
 **Enclosure with Standoffs Inserted**
 <p align="center"><img src="/images/build/small/1.JPG"></p>
 <p align="center"><i>
+Please ignore the white breadboards on the left of the enclosure. These assisted in an earlier iteration of the
+project and are not needed for assembly.
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/1.JPG">Click here</a>
 for larger photo.
 </i></p>
@@ -144,6 +146,7 @@ for larger photo.
 **Logic Board Mounted**
 <p align="center"><img src="/images/build/small/2.JPG"></p>
 <p align="center"><i>
+Note the wires for UV LED array are run beneath the logic board.
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/2.JPG">Click here</a>
 for larger photo.
 </i></p>
@@ -177,7 +180,7 @@ for larger photo.
 
 <br><br><br>
 
-*Uranium Sample Holder Lower Half Detail*
+**Uranium Sample Holder Lower Half Detail**
 <p align="center"><img src="/images/build/small/6.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/6.JPG">Click here</a>
@@ -186,7 +189,7 @@ for larger photo.
 
 <br><br><br>
 
-*Uranium Sample Holder Lower Half Mounted*
+**Uranium Sample Holder Lower Half Mounted**
 <p align="center"><img src="/images/build/small/7.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/7.JPG">Click here</a>
@@ -195,7 +198,7 @@ for larger photo.
 
 <br><br><br>
 
-*Uranium Sample Holder Top Half Mounted*
+**Uranium Sample Holder Top Half Mounted**
 <p align="center"><img src="/images/build/small/8.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/8.JPG">Click here</a>
@@ -204,7 +207,7 @@ for larger photo.
 
 <br><br><br>
 
-*Control Panel Board Wired*
+**Control Panel Board Wired**
 <p align="center"><img src="/images/build/small/9.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/9.JPG">Click here</a>
@@ -213,7 +216,7 @@ for larger photo.
 
 <br><br><br>
 
-*Control Panel Board Wiring Detail*
+**Control Panel Board Wiring Detail**
 <p align="center"><img src="/images/build/small/10.JPG"></p>
 <p align="center"><i>
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/10.JPG">Click here</a>
@@ -222,7 +225,7 @@ for larger photo.
 
 ## Acknowledgements
 
-Many thanks to Emily Velasco (@MLE_Online) for advice on stainless surface sanding, and for generally being enthusiastic
+Many thanks to Emily Velasco (@MLE_Online) for advice on stainless steel surface sanding, and for generally being enthusiastic
 as heck about this project.
 
 ## References
