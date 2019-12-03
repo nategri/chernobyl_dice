@@ -75,7 +75,7 @@ Here's a rough outline of the steps required for assembly:
 2. Order other components (see URLs in the parts list)
 3. Embed brass standoffs into enclosure (this is how front and back panels and custom PCBs will be mounted)
     * TIPS
-      * A single drop of cyanocrylate (Super Glue) should be placed in the standoff holes in the enclosure before they are pressed
+      * A single drop of cyanocrylate (superglue) should be placed in the standoff holes in the enclosure before they are pressed
         in (the tip of a Phillips head screw driver workds well for this task)
       * If the tops some holes came out of the printer a bit distorted then they can be widened easily by twisting a largish
         Phillips head scewdriver in them until the top of the hole is wide enough.
@@ -101,7 +101,7 @@ Here's a rough outline of the steps required for assembly:
         side first)
 9. Mount toggle-and-PCB assembly, LED-with-holder assemblies, rotary-switch-and-lock-plate assembly, and pushbutton on front panel
     * TIP
-      * While attaching the LED to the holder, apply a drop of cyanocrylate (SuperGlue) to prevent the LED from falling out of the
+      * While attaching the LED to the holder, apply a drop of cyanocrylate (superglue) to prevent the LED from falling out of the
         front of the holder
 10. Perform wiring of the control panel (see wiring schematic and build photos)
 11. Fit the eight nixie display driver boards into the female headers of the Nixie Display Board
@@ -135,7 +135,7 @@ the desired distance.
 **Enclosure with Standoffs Inserted**
 <p align="center"><img src="/images/build/small/1.JPG"></p>
 <p align="center"><i>
-Please ignore the white breadboards on the left of the enclosure. These assisted in an earlier iteration of the
+You can ignore the white breadboards on the left of the enclosure. These assisted in an earlier iteration of the
 project and are not needed for assembly.
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/1.JPG">Click here</a>
 for larger photo.
@@ -174,6 +174,8 @@ for larger photo.
 **Geiger Board Mounted**
 <p align="center"><img src="/images/build/small/5.JPG"></p>
 <p align="center"><i>
+NOTE: You must pull the JMP2 jumpber near the center of the Geiger board (this turns off the built-in speaker of the
+board---we want these clicks to be optional and controlled by firmware instead).
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/5.JPG">Click here</a>
 for larger photo.
 </i></p>
@@ -183,6 +185,7 @@ for larger photo.
 **Uranium Sample Holder Lower Half Detail**
 <p align="center"><img src="/images/build/small/6.JPG"></p>
 <p align="center"><i>
+UV LEDs and piezo speaker are glued mounted into place using cryanocrylate (superglue) adhesive.
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/6.JPG">Click here</a>
 for larger photo.
 </i></p>
@@ -192,6 +195,7 @@ for larger photo.
 **Uranium Sample Holder Lower Half Mounted**
 <p align="center"><img src="/images/build/small/7.JPG"></p>
 <p align="center"><i>
+The middle standoff is attached on the underside with a nut.
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/7.JPG">Click here</a>
 for larger photo.
 </i></p>
