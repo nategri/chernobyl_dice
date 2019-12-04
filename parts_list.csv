@@ -19,6 +19,7 @@ Pushbutton,1,https://www.amazon.com/gp/product/B079KNH25F
 Red LED (3 mm),4,,
 Stainless Steel Front Panel,1,https://www.oshcut.com/,File: parts/front_panel.dxf
 Enclosure,1,,"Files: parts/enclosure_[big, small]_half.stl"
+Uranium Sample Holder,1,,"Files: parts/sample_holder_[bottom, top].stl"
 Rotary Switch Lock Plate,1,,File: parts/lock_plate.stl
 Acrylic Rear Panel,1,https://www.ponoko.com/,File: parts/rear_panel.svg
 Nixie Display Board,1,https://oshpark.com/,File: display_pcb/nixie_display_board.kicad_pcb

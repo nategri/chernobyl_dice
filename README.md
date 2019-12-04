@@ -185,7 +185,8 @@ for larger photo.
 **Uranium Sample Holder Lower Half Detail**
 <p align="center"><img src="/images/build/small/6.JPG"></p>
 <p align="center"><i>
-UV LEDs and piezo speaker are glued mounted into place using cryanocrylate (superglue) adhesive.
+UV LEDs and piezo speaker are glued mounted into place using cyanocrylate (superglue) adhesive. Uranium glass
+marbles will be held in place mechanically when the top half is mounted.
 <a href="https://raw.githubusercontent.com/nategri/chernobyl_dice/master/images/build/large/6.JPG">Click here</a>
 for larger photo.
 </i></p>
