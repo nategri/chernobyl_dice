@@ -21,7 +21,7 @@ Stainless Steel Front Panel,1,https://www.oshcut.com/,File: parts/front_panel.dx
 Enclosure,1,,"Files: parts/enclosure_[big, small]_half.stl"
 Uranium Sample Holder,1,,"Files: parts/sample_holder_[bottom, top].stl"
 Rotary Switch Lock Plate,1,,File: parts/lock_plate.stl
-Acrylic Rear Panel,1,https://www.ponoko.com/,File: parts/rear_panel.svg
+Acrylic Rear Panel,1,https://www.ponoko.com/,File: parts/rear_panel.dxf
 Nixie Display Board,1,https://oshpark.com/,File: display_pcb/nixie_display_board.kicad_pcb
 Logic Board,1,https://oshpark.com/,File: logic_pcb/rad_dice_logic_board.kicad_pcb
 Control Panel Board,1,https://oshpark.com/,File: front_panel_pcb/panel_board.kicad_pcb
