@@ -19,7 +19,6 @@
 
 RTC_DS3231 rtc;
 
-//volatile uint8_t didTrigger;
 volatile unsigned long prevTrigTime;
 volatile unsigned long trigCount;
 
@@ -60,7 +59,6 @@ void geigerEvent() {
     speaker->clickBegin();
   }
 
-  //didTrigger = 1;
   prevTrigTime = millis();
   trigCount++;
 
@@ -84,21 +82,6 @@ ISR(TIMER0_COMPA_vect) {
       speaker->clickEnd();
     }
   }
-
-  // Handle this 1 ms window
- /* if(didTrigger) {
-    ringBuff[ringBuffWriteHead] = 1;
-    didTrigger = 0;
-  }
-  else {
-    ringBuff[ringBuffWriteHead] = 0;
-  }*/
-
-  /*if(didTrigger) {
-    ringBuff[ringBuffWriteHead] = (micros() / 4) % 2;
-    didTrigger = 0;
-    ringBuffWriteHead++;
-  }*/
 }
 
 uint8_t getRandByte(unsigned char callingPosition) {
@@ -115,8 +98,6 @@ uint8_t getRandByte(unsigned char callingPosition) {
   while(currBit < 8) {
 
     uint8_t bitContribution = 0b00000001 << currBit;
-
-    //uint8_t bitDebias = DEBIAS_PATTERN & bitContribution;
     
     while(1) {
       if(controlPanel->switch_state(callingPosition) != LOW) {
@@ -130,23 +111,12 @@ uint8_t getRandByte(unsigned char callingPosition) {
         uint8_t idx = ringBuffReadHead;
         ringBuffReadHead += 1;
 
-        /*if(ringBuff[idx] == ringBuff[idx+1]) {
-          continue;
-        }
-        else if((ringBuff[idx] == 0) && (ringBuff[idx+1] == 1)) {
-          bitContribution = 0b00000000;
-        }*/
-
         if(ringBuff[idx] == 1) {
           randByte += bitContribution;
         }
 
         currBit++;
 
-        // Debias
-        //bitContribution = bitContribution ^ bitDebias;
-
-        //randByte += bitContribution;
         break;
       }
       
