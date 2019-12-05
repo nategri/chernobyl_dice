@@ -89,7 +89,7 @@ Here's a rough outline of the steps required for assembly:
       * For the control panel PCB you can temporarily mount the toggle switches in the front panel and then press the PCB on top of
         the back of the switches to ensure good alignment---you can then pull the whole board-and-toggle assembly off of the front
         panel to solder it, or even solder it in place and then pull it off
-      * The file 'nixie_jig.stl' is a provided as a useful place to rest the nixie tube while soldering them to the 'exixe' driver
+      * The file 'nixie_holder.stl' is a provided as a useful place to rest the nixie tube while soldering them to the 'exixe' driver
         boards
 5. Attach the acrylic back panel and panel mount USB cable to the rear of the enclosure
 6. Mount custom PCBs inside enclosure and perform wiring (see wiring schematic and build photos)
