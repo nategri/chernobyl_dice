@@ -19,7 +19,7 @@
 
 RTC_DS3231 rtc;
 
-volatile uint8_t didTrigger;
+//volatile uint8_t didTrigger;
 volatile unsigned long prevTrigTime;
 volatile unsigned long trigCount;
 
@@ -40,6 +40,17 @@ Nixies* nixies;
 ControlPanel* controlPanel;
 Speaker* speaker;
 
+void delayAndNextTrig(uint8_t delay_time) {
+  unsigned long prevTrigCount = trigCount;
+  unsigned long callTime = millis();
+  while(1) {
+    unsigned long dt = millis() - callTime;
+    if((trigCount != prevTrigCount) && (dt > delay_time)) {
+      break;
+    }
+  }
+}
+
 void geigerEvent() {
   if(trigLedsOn) {
     digitalWrite(UV_LED_PIN, HIGH);
@@ -49,9 +60,12 @@ void geigerEvent() {
     speaker->clickBegin();
   }
 
-  didTrigger = 1;
+  //didTrigger = 1;
   prevTrigTime = millis();
   trigCount++;
+
+  ringBuff[ringBuffWriteHead] = (micros() / 4) % 2;
+  ringBuffWriteHead++;
 }
 
 ISR(TIMER0_COMPA_vect) {
@@ -72,22 +86,26 @@ ISR(TIMER0_COMPA_vect) {
   }
 
   // Handle this 1 ms window
-  if(didTrigger) {
+ /* if(didTrigger) {
     ringBuff[ringBuffWriteHead] = 1;
     didTrigger = 0;
   }
   else {
     ringBuff[ringBuffWriteHead] = 0;
-  }
+  }*/
 
-  ringBuffWriteHead++;
+  /*if(didTrigger) {
+    ringBuff[ringBuffWriteHead] = (micros() / 4) % 2;
+    didTrigger = 0;
+    ringBuffWriteHead++;
+  }*/
 }
 
 uint8_t getRandByte(unsigned char callingPosition) {
   
   uint8_t randByte = 0;
 
-  uint8_t ringBuffReadHead = ringBuffWriteHead - 2;
+  uint8_t ringBuffReadHead = ringBuffWriteHead - 1;
 
   uint8_t currBit = 0;
 
@@ -98,7 +116,7 @@ uint8_t getRandByte(unsigned char callingPosition) {
 
     uint8_t bitContribution = 0b00000001 << currBit;
 
-    uint8_t bitDebias = DEBIAS_PATTERN & bitContribution;
+    //uint8_t bitDebias = DEBIAS_PATTERN & bitContribution;
     
     while(1) {
       if(controlPanel->switch_state(callingPosition) != LOW) {
@@ -107,24 +125,28 @@ uint8_t getRandByte(unsigned char callingPosition) {
 
       uint8_t diff = ringBuffWriteHead - ringBuffReadHead;
       
-      if(diff >= 2) {
+      if(diff >= 1) {
         // Generate a bit
         uint8_t idx = ringBuffReadHead;
-        ringBuffReadHead += 2;
+        ringBuffReadHead += 1;
 
-        if(ringBuff[idx] == ringBuff[idx+1]) {
+        /*if(ringBuff[idx] == ringBuff[idx+1]) {
           continue;
         }
         else if((ringBuff[idx] == 0) && (ringBuff[idx+1] == 1)) {
           bitContribution = 0b00000000;
+        }*/
+
+        if(ringBuff[idx] == 1) {
+          randByte += bitContribution;
         }
 
         currBit++;
 
         // Debias
-        bitContribution = bitContribution ^ bitDebias;
+        //bitContribution = bitContribution ^ bitDebias;
 
-        randByte += bitContribution;
+        //randByte += bitContribution;
         break;
       }
       
@@ -330,7 +352,7 @@ void loop() {
         Serial.write((randByte % toggleNum) + 1);
       }
       Serial.end();
-      delay(delayTime);
+      delayAndNextTrig(delayTime);
 
       char* displayDigits;
 
@@ -342,7 +364,7 @@ void loop() {
           displayDigits = Nixies::number_to_digits((randByte % toggleNum) + 1, NO_ZERO_PAD);
         }
         nixies->display(displayDigits);
-        delay(delayTime);
+        delayAndNextTrig(delayTime);
       }
     }
 
@@ -392,7 +414,7 @@ void loop() {
           break;
         }
       }
-      delay(500);
+      delayAndNextTrig(500);
       
       char* displayDigits = Nixies::number_to_digits((randByte % toggleNum) + 1, NO_ZERO_PAD);
       if(controlPanel->switch_state(ROTARYPOSITION3) == LOW) {
@@ -405,7 +427,7 @@ void loop() {
             break;
           }
         }
-        delay(500);
+        delayAndNextTrig(500);
       }
     }
   }
