@@ -46,6 +46,12 @@ by the sum of the toggled switches (no switches are set the device will generate
 once to generate the number, and once again to clear the display. The size of the number to be generated is displayed in
 blinking digits.
 
+## Statistical Performance
+
+Further aimprovement may be possible (a slight 0-bit bias is suspected), but currently the Chernobyl Dice is capable of generating a
+1.0+ megabit file that passes [a Python implementation](https://github.com/dj-on-github/sp800_22_tests) of the NIST statistical
+test suite [1]. This means the Chernolbyl Dice is likely a *very* fair dice.
+
 ## CAD Drawing
 
 A Fusion 360 CAD drawing of the device can be viewed and downloaded at this URL:
@@ -235,4 +241,8 @@ as heck about this project.
 
 ## References
 
-[0] "Quantum Random Number Generators." M. Herrero-Collantes and J. C. Garcia-Escartin. https://arxiv.org/abs/1604.03304
+[0] "Quantum Random Number Generators." M. Herrero-Collantes and J. C. Garcia-Escartin.
+https://arxiv.org/abs/1604.03304
+
+[1] "A Statistical Test Suite for Random and Pseudorandom Number Generators for Cryptographic Applications."
+https://csrc.nist.gov/publications/detail/sp/800-22/rev-1a/final
