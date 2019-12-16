@@ -6,7 +6,7 @@
 
 #### Description
 
-The Chernobyl Dice is a quantum random number generator that uses nuclear decays from a weakly radioactive sample
+The Chernobyl Dice is a quantum random number generator [0] that uses nuclear decays from a weakly radioactive sample
 as a source of entropy. It consists of four primary components:
 
 * An Arduino Nano microcontroller
@@ -14,9 +14,12 @@ as a source of entropy. It consists of four primary components:
 * Six uranium glass marbles
 * Nixie tube display
 
-Geiger counter events ("clicks") are converted into random bits by taking the mod2 of the total number of
-4 microsecond "ticks" that have passed since the device was switched on (e.g. the device outputs a "0" if the
-Geiger tube triggers on an even tick, and output a "1" if it triggers on an odd microsecond). [0]
+Geiger counter events ("clicks") are converted into random bits using the following algorithm:
+
+1. In a ring buffer, record either a 0 or a 1, depending on whether or not a Geiger event occurred
+2. Perform an initial debias of this 0-dominated stream using von Neumann's method [0]
+3. Further debias by performing an XOR this bit with the mod2 of the number of elapsed 4 microsecond intervals
+since the device was switched on
 
 The uranium glass sample is illuminated by an array of ultraviolet LEDs at each Geiger event, which makes them
 fluoresce bright green. This has nothing to do with the radioactivity of the sample, but it does, however, *look
@@ -48,9 +51,34 @@ blinking digits.
 
 ## Statistical Performance
 
-Further aimprovement may be possible (a slight 0-bit bias is suspected), but currently the Chernobyl Dice is capable of generating a
+Further testing is required to confirm the consistency of results, but currently the Chernobyl Dice is capable of generating a
 1.0+ megabit file that passes [a Python implementation](https://github.com/dj-on-github/sp800_22_tests) of the NIST statistical
 test suite [1]. This means the Chernolbyl Dice is likely a *very* fair dice.
+
+The directory `statistical_testing` contains some utilities for assesing and gathering data from the device, including a sample
+random binary data file, `rand.binary`.
+
+*Statistical Test Suite Results of Random Binary File*
+
+```
+SUMMARY
+-------
+monobit_test                             0.801278303698     PASS
+frequency_within_block_test              0.352311999334     PASS
+runs_test                                0.947067158106     PASS
+longest_run_ones_in_a_block_test         0.249182388793     PASS
+binary_matrix_rank_test                  0.96831898268      PASS
+dft_test                                 0.183034167415     PASS
+non_overlapping_template_matching_test   0.999999894121     PASS
+overlapping_template_matching_test       0.0                FAIL
+maurers_universal_test                   0.0                FAIL
+linear_complexity_test                   0.0                FAIL
+serial_test                              0.109696503615     PASS
+approximate_entropy_test                 0.326799691205     PASS
+cumulative_sums_test                     0.489306179952     PASS
+random_excursion_test                    0.156202680226     PASS
+random_excursion_variant_test            0.298600494391     PASS
+```
 
 ## CAD Drawing
 
