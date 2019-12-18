@@ -44,7 +44,7 @@ display, and the Geiger "clicks" will be silent.
 
 *Dice Mode*
 
-In dice mode random number generation is initiated via the pushbotton, and the size of the random number to be generated is set
+In dice mode random number generation is initiated via the pushbutton, and the size of the random number to be generated is set
 by the sum of the toggled switches (no switches are set the device will generate random byte in the range 0-255). Press
 once to generate the number, and once again to clear the display. The size of the number to be generated is displayed in
 blinking digits.
