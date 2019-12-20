@@ -20,9 +20,9 @@ volatile uint8_t didTrigger;
 volatile unsigned long prevTrigTime;
 volatile unsigned long trigCount;
 
-volatile uint8_t ringBuff[256];
-
-volatile uint8_t ringBuffWriteHead;
+// Ring buffer for Von Neumann algorithm based algorithm 
+volatile uint8_t vnRingBuff[256];
+volatile uint8_t vnRingBuffWriteHead;
 
 // Global variables for state machine
 uint8_t turboMode;
@@ -70,21 +70,21 @@ ISR(TIMER0_COMPA_vect) {
 
   // Handle this 1 ms window
   if(didTrigger) {
-    ringBuff[ringBuffWriteHead] = 1;
+    vnRingBuff[vnRingBuffWriteHead] = 1;
     didTrigger = 0;
   }
   else {
-    ringBuff[ringBuffWriteHead] = 0;
+    vnRingBuff[vnRingBuffWriteHead] = 0;
   }
 
-  ringBuffWriteHead++;
+  vnRingBuffWriteHead++;
 }
 
 uint8_t getRandByte(unsigned char callingPosition) {
   
   uint8_t randByte = 0;
 
-  uint8_t ringBuffReadHead = ringBuffWriteHead - 2;
+  uint8_t vnRingBuffReadHead = vnRingBuffWriteHead - 2;
 
   uint8_t currBit = 0;
 
@@ -100,22 +100,26 @@ uint8_t getRandByte(unsigned char callingPosition) {
         return 0;
       }
 
-      uint8_t diff = ringBuffWriteHead - ringBuffReadHead;
+      uint8_t diff = vnRingBuffWriteHead - vnRingBuffReadHead;
       
       if(diff >= 2) {
         // Generate a bit
-        uint8_t idx = ringBuffReadHead;
-        ringBuffReadHead += 2;
+        uint8_t idx = vnRingBuffReadHead;
+        vnRingBuffReadHead += 2;
 
-        if(ringBuff[idx] == ringBuff[idx+1]) {
+        if(vnRingBuff[idx] == vnRingBuff[idx+1]) {
           continue;
         }
-        else if((ringBuff[idx] == 1) && (ringBuff[idx+1] == 0)) {
+        else if((vnRingBuff[idx] == 1) && (vnRingBuff[idx+1] == 0)) {
           randByte += bitContribution;
+          uint8_t parity = (micros() / 4) % 2;
+          randByte = randByte ^ (parity << currBit);
           currBit++;
           break;
         }
-        else if((ringBuff[idx] == 0) && (ringBuff[idx+1] == 1)) {
+        else if((vnRingBuff[idx] == 0) && (vnRingBuff[idx+1] == 1)) {
+          uint8_t parity = (micros() / 4) % 2;
+          randByte = randByte ^ (parity << currBit);
           currBit++;
           break;
         }
@@ -167,10 +171,10 @@ void setup() {
   controlPanel = new ControlPanel();
   speaker = new Speaker();
 
-  ringBuffWriteHead = 0;
+  vnRingBuffWriteHead = 0;
   prevTrigTime = 0;
   trigCount = 0;
-  ringBuff[ringBuffWriteHead] = 0;
+  vnRingBuff[vnRingBuffWriteHead] = 0;
 
   // Settings for Timer0 interrupt
   OCR0A = 0xAF; // Count at which to insert interrupt
