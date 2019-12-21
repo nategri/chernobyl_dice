@@ -1,8 +1,8 @@
 # Chernobyl Dice
 
 <p align="center"><img src="/images/chernobyl_dice.gif"></p>
-
-<p align="center"><img width="400" src="/images/chernobyl_dice.jpg"></p>
+<p align="center"><i>In this clip the Chernobyl Dice set to continuously generate numbers in the range [1,26]. You
+can check out a longer YouTube clip showing various modes of operation [here](https://www.youtube.com/user/BoredScientist)</i></p>
 
 ## Introduction
 
