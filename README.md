@@ -1,6 +1,8 @@
 # Chernobyl Dice
 
-<p align="center"><img src="/images/chernobyl_dice.jpg"></p>
+<p align="center"><img src="/images/chernobyl_dice.gif"></p>
+
+<p align="center"><img width="400" src="/images/chernobyl_dice.jpg"></p>
 
 ## Introduction
 
@@ -56,6 +58,8 @@ Further testing is required to confirm the consistency of results, but currently
 test suite [1]. This means the Chernolbyl Dice is likely a *very* fair dice.
 
 ```
+SUMMARY
+-------
 monobit_test                             0.279698915238     PASS
 frequency_within_block_test              0.404035783453     PASS
 runs_test                                0.0688862287393    PASS
