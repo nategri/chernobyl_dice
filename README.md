@@ -20,8 +20,8 @@ Geiger counter events ("clicks") are converted into random bits using the follow
 
 1. In a ring buffer, for each millisecond record either a 0 or a 1, depending on whether or not a Geiger event occurred
 2. Perform an initial de-bias of this 0-dominated stream using von Neumann's method [0]
-3. Further de-bias by performing an XOR this bit with the mod2 of the number of elapsed 4 microsecond intervals
-since the device was switched on
+3. Further de-bias by XOR-ing bits generated in the previous step with the mod2 of elapsed 4 microsecond intervals since
+since the device was powered on
 
 The uranium glass sample is illuminated by an array of ultraviolet LEDs at each Geiger event, which makes them
 fluoresce bright green. This has nothing to do with the radioactivity of the sample, but it does, however, *look
