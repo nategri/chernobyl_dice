@@ -18,7 +18,7 @@ as a source of entropy. It consists of four primary components:
 
 Geiger counter events ("clicks") are converted into random bits using the following algorithm:
 
-1. In a ring buffer, record either a 0 or a 1, depending on whether or not a Geiger event occurred
+1. In a ring buffer, for each millisecond record either a 0 or a 1, depending on whether or not a Geiger event occurred
 2. Perform an initial de-bias of this 0-dominated stream using von Neumann's method [0]
 3. Further de-bias by performing an XOR this bit with the mod2 of the number of elapsed 4 microsecond intervals
 since the device was switched on
